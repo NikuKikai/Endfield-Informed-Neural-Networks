@@ -1,0 +1,4329 @@
+{
+  "source": "hsyhhssyy/IndustrialPlanner",
+  "items": [
+    {
+      "id": "item_bottled_food_1",
+      "name": "柑实罐头",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_food_2",
+      "name": "优质柑实罐头",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_food_3",
+      "name": "精选柑实罐头",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_food_4",
+      "name": "锦草软饮",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_food_5",
+      "name": "优质锦草软饮",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_rec_hp_1",
+      "name": "荞愈胶囊",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_rec_hp_2",
+      "name": "优质荞愈胶囊",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_rec_hp_3",
+      "name": "精选荞愈胶囊",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_rec_hp_4",
+      "name": "芽针针剂",
+      "type": "product"
+    },
+    {
+      "id": "item_bottled_rec_hp_5",
+      "name": "优质芽针针剂",
+      "type": "product"
+    },
+    {
+      "id": "item_carbon_enr",
+      "name": "稳定碳块",
+      "type": "product"
+    },
+    {
+      "id": "item_carbon_enr_powder",
+      "name": "致密碳粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_carbon_mtl",
+      "name": "碳块",
+      "type": "product"
+    },
+    {
+      "id": "item_carbon_powder",
+      "name": "碳粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_crystal_enr",
+      "name": "密制晶体",
+      "type": "product"
+    },
+    {
+      "id": "item_crystal_enr_powder",
+      "name": "致密晶体粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_crystal_powder",
+      "name": "晶体外壳粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_crystal_shell",
+      "name": "晶体外壳",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_ore",
+      "name": "赤铜矿",
+      "type": "raw"
+    },
+    {
+      "id": "item_copper_bottle",
+      "name": "赤铜瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_enr_bottle",
+      "name": "赫铜瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_enr",
+      "name": "赫铜块",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_powder",
+      "name": "赤铜粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_nugget",
+      "name": "赤铜块",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_enr2",
+      "name": "灼铜块",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_enr2_cmpt",
+      "name": "灼铜零件",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_jar",
+      "name": "赤铜耐压罐",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_acid",
+      "name": "沉积酸",
+      "type": "raw"
+    },
+    {
+      "id": "item_liquid_copper",
+      "name": "赤铜溶液",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_copper_enr",
+      "name": "赫铜溶液",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_sewage",
+      "name": "污水",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_xiranite_poly",
+      "name": "壤晶废液",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_xiranite_lowpoly",
+      "name": "惰性壤晶废液",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_xiranite_enr",
+      "name": "液化重息壤",
+      "type": "product"
+    },
+    {
+      "id": "item_xiranite_poly",
+      "name": "壤晶",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_cmpt",
+      "name": "实验息壤零件",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_cmpt",
+      "name": "实验重息壤零件",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_bottle",
+      "name": "实验息壤瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_bottle",
+      "name": "实验重息壤瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_nugget",
+      "name": "实验息壤块",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_box",
+      "name": "实验龙泡泡外壳",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_copper_xiranite_tool",
+      "name": "实验铜骨骼",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_lung",
+      "name": "息壤龙泡泡",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_nugget",
+      "name": "实验重息壤块",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_box",
+      "name": "实验龙泡泡重壳",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_copper_poly_gas",
+      "name": "实验息壤铜气",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_copper_poly",
+      "name": "实验息壤铜锭",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_copper_poly_cmpt",
+      "name": "实验息壤铜零件",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_copper_poly_tool",
+      "name": "实验息壤铜骨骼",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_lung",
+      "name": "重息壤龙泡泡",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_tool",
+      "name": "实验玉铜发散器",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_hulu",
+      "name": "息壤葫芦",
+      "type": "product"
+    },
+    {
+      "id": "item_activity_xiranite_enr_hulu",
+      "name": "息壤玉葫芦",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_cmpt",
+      "name": "赤铜零件",
+      "type": "product"
+    },
+    {
+      "id": "item_copper_enr_cmpt",
+      "name": "赫铜零件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_1",
+      "name": "紫晶装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_2",
+      "name": "蓝铁装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_3",
+      "name": "高晶装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_4",
+      "name": "息壤装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_4_1",
+      "name": "赤铜装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_4_2",
+      "name": "赫铜装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_equip_script_4_3",
+      "name": "灼铜装备原件",
+      "type": "product"
+    },
+    {
+      "id": "item_filter_core",
+      "name": "分离芯",
+      "type": "product"
+    },
+    {
+      "id": "item_glass_bottle",
+      "name": "紫晶质瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_glass_cmpt",
+      "name": "紫晶零件",
+      "type": "product"
+    },
+    {
+      "id": "item_glass_enr_bottle",
+      "name": "高晶质瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_glass_enr_cmpt",
+      "name": "高晶零件",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_bottle",
+      "name": "蓝铁瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_cmpt",
+      "name": "铁制零件",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_enr",
+      "name": "钢块",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_enr_bottle",
+      "name": "钢质瓶",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_enr_cmpt",
+      "name": "钢制零件",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_enr_powder",
+      "name": "致密蓝铁粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_nugget",
+      "name": "蓝铁块",
+      "type": "product"
+    },
+    {
+      "id": "item_iron_ore",
+      "name": "蓝铁矿",
+      "type": "raw"
+    },
+    {
+      "id": "item_iron_powder",
+      "name": "蓝铁粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_plant_grass_1",
+      "name": "锦草溶液",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_plant_grass_2",
+      "name": "芽针溶液",
+      "type": "product"
+    },
+    {
+      "id": "item_liquid_water",
+      "name": "清水",
+      "type": "raw"
+    },
+    {
+      "id": "item_liquid_xiranite",
+      "name": "液化息壤",
+      "type": "product"
+    },
+    {
+      "id": "item_gas_inert",
+      "name": "惰气",
+      "type": "raw"
+    },
+    {
+      "id": "item_gas_xiranite",
+      "name": "息壤气",
+      "type": "raw"
+    },
+    {
+      "id": "item_gas_xiranite_enr",
+      "name": "重息壤气",
+      "type": "product"
+    },
+    {
+      "id": "item_gas_copper",
+      "name": "气态赤铜",
+      "type": "product"
+    },
+    {
+      "id": "item_gas_copper_enr",
+      "name": "气态赫铜",
+      "type": "product"
+    },
+    {
+      "id": "item_gas_water",
+      "name": "水蒸气",
+      "type": "product"
+    },
+    {
+      "id": "item_gas_copper_enr2",
+      "name": "气态灼铜",
+      "type": "product"
+    },
+    {
+      "id": "item_muck_feces_1",
+      "name": "驮兽粪便",
+      "type": "raw"
+    },
+    {
+      "id": "item_muck_xiranite_1",
+      "name": "膨地啪",
+      "type": "product"
+    },
+    {
+      "id": "item_originium_enr_powder",
+      "name": "致密源石粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_originium_ore",
+      "name": "源矿",
+      "type": "raw"
+    },
+    {
+      "id": "item_originium_powder",
+      "name": "源石粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_bbflower_1",
+      "name": "酮化灌木",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_bbflower_powder_1",
+      "name": "酮化灌木粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_bbflower_seed_1",
+      "name": "酮化树种",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_grass_1",
+      "name": "锦草",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_grass_2",
+      "name": "芽针",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_grass_powder_1",
+      "name": "锦草粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_grass_powder_2",
+      "name": "芽针粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_grass_seed_1",
+      "name": "锦草种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_grass_seed_2",
+      "name": "芽针种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_1",
+      "name": "荞花",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_2",
+      "name": "柑实",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_3",
+      "name": "砂叶",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_enr_powder_1",
+      "name": "细磨荞花粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_enr_powder_2",
+      "name": "细磨柑实粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_powder_1",
+      "name": "荞花粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_powder_2",
+      "name": "柑实粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_powder_3",
+      "name": "砂叶粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_seed_1",
+      "name": "荞花种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_seed_2",
+      "name": "柑实种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_moss_seed_3",
+      "name": "砂叶种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_1",
+      "name": "灰芦麦",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_2",
+      "name": "苦叶椒",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_3",
+      "name": "琼叶参",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_4",
+      "name": "金石稻",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_seed_1",
+      "name": "灰芦麦种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_seed_2",
+      "name": "苦叶椒种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_seed_3",
+      "name": "琼叶参种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_sp_seed_4",
+      "name": "金石稻种子",
+      "type": "product"
+    },
+    {
+      "id": "item_plant_tundra_wood",
+      "name": "原木",
+      "type": "raw"
+    },
+    {
+      "id": "item_proc_battery_1",
+      "name": "低容谷地电池",
+      "type": "product"
+    },
+    {
+      "id": "item_proc_battery_2",
+      "name": "中容谷地电池",
+      "type": "product"
+    },
+    {
+      "id": "item_proc_battery_3",
+      "name": "高容谷地电池",
+      "type": "product"
+    },
+    {
+      "id": "item_proc_battery_4",
+      "name": "低容武陵电池",
+      "type": "product"
+    },
+    {
+      "id": "item_proc_battery_5",
+      "name": "中容武陵电池",
+      "type": "product"
+    },
+    {
+      "id": "item_proc_bomb_1",
+      "name": "工业爆炸物",
+      "type": "product"
+    },
+    {
+      "id": "item_quartz_enr",
+      "name": "高晶纤维",
+      "type": "product"
+    },
+    {
+      "id": "item_quartz_enr_powder",
+      "name": "高晶粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_quartz_glass",
+      "name": "紫晶纤维",
+      "type": "product"
+    },
+    {
+      "id": "item_quartz_powder",
+      "name": "紫晶粉末",
+      "type": "product"
+    },
+    {
+      "id": "item_quartz_sand",
+      "name": "紫晶矿",
+      "type": "raw"
+    },
+    {
+      "id": "item_xiranite_enr_powder",
+      "name": "重息壤",
+      "type": "product"
+    },
+    {
+      "id": "item_xiranite_powder",
+      "name": "息壤",
+      "type": "product"
+    },
+    {
+      "id": "item_gas_acid",
+      "name": "酸气",
+      "type": "product"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "r_crusher_originium_powder_basic",
+      "name": "源石粉末 ← 源矿",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_originium_ore",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_originium_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_iron_nugget_from_iron_ore_basic",
+      "name": "蓝铁块 ← 蓝铁矿",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_ore",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_nugget",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_iron_nugget_from_iron_powder_basic",
+      "name": "蓝铁块 ← 蓝铁粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_nugget",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_liquid_furnace_refined_copper_from_copper_ore_basic",
+      "name": "赤铜块 + 污水 ← 赤铜矿 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_ore",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_wastewater_treatment_void_wastewater_basic",
+      "name": "处理 污水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_wastewater_treatment_void_xiranite_waste_liquid_basic",
+      "name": "处理 壤晶废液",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_wastewater_treatment_void_inert_xiranite_waste_liquid_basic",
+      "name": "处理 惰性壤晶废液",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite_lowpoly",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_water_purifier_node_xiranite_waste_from_sewage_basic",
+      "name": "净水节点壤晶废液析出",
+      "duration": 1,
+      "inputs": [
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 30
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_winder_copper_equip_script_from_refined_copper_and_xiranite_basic",
+      "name": "赤铜装备原件 ← 赤铜零件 + 息壤",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_4_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_mix_pool_xiranite_waste_liquids_from_liquid_xiranite_and_wastewater_basic",
+      "name": "壤晶废液 + 惰性壤晶废液 ← 液化息壤 + 污水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_xiranite_lowpoly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_mix_pool_xiranite_waste_liquids_from_liquid_xiranite_and_wastewater_basic_large",
+      "name": "壤晶废液 + 惰性壤晶废液 ← 液化息壤 + 污水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_xiranite_lowpoly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_mix_pool_inert_waste_liquid_water_slag_from_waste_liquid_and_iron_powder_basic",
+      "name": "污水 + 壤晶 ← 壤晶废液 + 蓝铁粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 2
+        },
+        {
+          "itemId": "item_iron_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        },
+        {
+          "itemId": "item_xiranite_poly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_mix_pool_inert_waste_liquid_water_slag_from_waste_liquid_and_iron_powder_basic_large",
+      "name": "污水 + 壤晶 ← 壤晶废液 + 蓝铁粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 2
+        },
+        {
+          "itemId": "item_iron_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        },
+        {
+          "itemId": "item_xiranite_poly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_chrono_tools_asm_medium_wuling_battery_from_waste_slag_and_originium_enr_powder_basic",
+      "name": "中容武陵电池 ← 壤晶 + 致密源石粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_poly",
+          "amount": 5
+        },
+        {
+          "itemId": "item_originium_enr_powder",
+          "amount": 20
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_proc_battery_5",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_iron_powder_from_iron_nugget_basic",
+      "name": "蓝铁粉末 ← 蓝铁块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_nugget",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_copper_powder_from_copper_nugget_basic",
+      "name": "赤铜粉末 ← 赤铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_quartz_powder_from_quartz_glass_basic",
+      "name": "紫晶粉末 ← 紫晶纤维",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_glass",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_quartz_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_carbon_powder_from_carbon_mtl_basic",
+      "name": "碳粉末 ← 碳块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_crystal_powder_from_crystal_shell_basic",
+      "name": "晶体外壳粉末 ← 晶体外壳",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_crystal_shell",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_moss_powder_1_from_moss_1_basic",
+      "name": "荞花粉末 ← 荞花",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_powder_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_moss_powder_2_from_moss_2_basic",
+      "name": "柑实粉末 ← 柑实",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_powder_2",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_seedcol_moss_seed_from_moss_basic",
+      "name": "砂叶种子 ← 砂叶",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_seed_3",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_seedcol_moss_seed_1_from_moss_1_basic",
+      "name": "荞花种子 ← 荞花",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_seed_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_seedcol_moss_seed_2_from_moss_2_basic",
+      "name": "柑实种子 ← 柑实",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_seed_2",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_seedcol_bbflower_seed_from_bbflower_basic",
+      "name": "酮化树种 ← 酮化灌木",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_bbflower_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_bbflower_seed_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_seedcol_grass_seed_1_from_grass_1_basic",
+      "name": "锦草种子 ← 锦草",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_grass_seed_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_seedcol_grass_seed_2_from_grass_2_basic",
+      "name": "芽针种子 ← 芽针",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_grass_seed_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_planter_moss_from_moss_seed_basic",
+      "name": "砂叶 ← 砂叶种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_seed_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_3",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_planter_moss_1_from_moss_seed_1_basic",
+      "name": "荞花 ← 荞花种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_seed_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_planter_moss_2_from_moss_seed_2_basic",
+      "name": "柑实 ← 柑实种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_seed_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_planter_bbflower_from_bbflower_seed_basic",
+      "name": "酮化灌木 ← 酮化树种",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_bbflower_seed_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_bbflower_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_moss_powder_from_moss_basic",
+      "name": "砂叶粉末 ← 砂叶",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 3
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_bbflower_powder_from_bbflower_basic",
+      "name": "酮化灌木粉末 ← 酮化灌木",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_bbflower_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_bbflower_powder_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_grass_powder_1_from_grass_1_basic",
+      "name": "锦草粉末 ← 锦草",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_grass_powder_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_crusher_grass_powder_2_from_grass_2_basic",
+      "name": "芽针粉末 ← 芽针",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_grass_powder_2",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_iron_enr_powder_from_iron_and_moss_powder_basic",
+      "name": "致密蓝铁粉末 ← 蓝铁粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_powder",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_quartz_enr_powder_from_quartz_and_moss_powder_basic",
+      "name": "高晶粉末 ← 紫晶粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_powder",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_quartz_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_iron_enr_from_iron_enr_powder_basic",
+      "name": "钢块 ← 致密蓝铁粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "furnance_activity_xiranite_nugget_1",
+      "name": "实验息壤块生产",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_nugget",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "furnance_activity_xiranite_enr_nugget_1",
+      "name": "实验重息壤块生产",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_nugget",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_quartz_glass_from_quartz_sand_basic",
+      "name": "紫晶纤维 ← 紫晶矿",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_sand",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_quartz_glass",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_crystal_shell_from_originium_ore_basic",
+      "name": "晶体外壳 ← 源矿",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_originium_ore",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_shell",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_quartz_glass_from_quartz_powder_basic",
+      "name": "紫晶纤维 ← 紫晶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_quartz_glass",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_crystal_shell_from_crystal_powder_basic",
+      "name": "晶体外壳 ← 晶体外壳粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_crystal_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_shell",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_crystal_powder_from_originium_powder_basic",
+      "name": "晶体外壳粉末 ← 源石粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_originium_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_crystal_enr_powder_from_originium_enr_powder_basic",
+      "name": "致密晶体粉末 ← 致密源石粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_originium_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_crystal_enr_from_crystal_enr_powder_basic",
+      "name": "密制晶体 ← 致密晶体粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_crystal_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_quartz_enr_from_quartz_enr_powder_basic",
+      "name": "高晶纤维 ← 高晶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_quartz_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_enr_from_carbon_enr_powder_basic",
+      "name": "稳定碳块 ← 致密碳粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_carbon_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_mtl_from_moss_1_basic",
+      "name": "碳块 ← 荞花",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_mtl_from_moss_2_basic",
+      "name": "碳块 ← 柑实",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_mtl_from_moss_3_basic",
+      "name": "碳块 ← 砂叶",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_mtl_from_grass_1_basic",
+      "name": "碳块 ← 锦草",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_mtl_from_grass_2_basic",
+      "name": "碳块 ← 芽针",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_powder_from_moss_powder_1_basic",
+      "name": "碳粉末 ← 荞花粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_powder_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_powder_from_moss_powder_2_basic",
+      "name": "碳粉末 ← 柑实粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_powder_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_powder_from_moss_powder_3_basic",
+      "name": "碳粉末 ← 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 3
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_powder_from_grass_powder_1_basic",
+      "name": "碳粉末 ← 锦草粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_powder_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_powder_from_grass_powder_2_basic",
+      "name": "碳粉末 ← 芽针粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_powder_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_enr_powder_from_moss_enr_powder_1_basic",
+      "name": "致密碳粉末 ← 细磨荞花粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_enr_powder_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_furnace_carbon_enr_powder_from_moss_enr_powder_2_basic",
+      "name": "致密碳粉末 ← 细磨柑实粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_enr_powder_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_iron_enr_cmpt_from_iron_enr_basic",
+      "name": "钢制零件 ← 钢块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_enr",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_enr_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_iron_cmpt_from_iron_nugget_basic",
+      "name": "铁制零件 ← 蓝铁块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_nugget",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_copper_cmpt_from_copper_nugget_basic",
+      "name": "赤铜零件 ← 赤铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_copper_enr_cmpt_from_copper_enr_basic",
+      "name": "赫铜零件 ← 赫铜块",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_activity_xiranite_cmpt_from_xiranite_powder_basic",
+      "name": "实验息壤零件 ← 息壤",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_activity_xiranite_enr_cmpt_from_xiranite_enr_powder_basic",
+      "name": "实验重息壤零件 ← 重息壤",
+      "duration": 20,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_cmpt",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "shaper_activity_xiranite_box_1",
+      "name": "实验龙泡泡外壳生产",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_nugget",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_box",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "shaper_gas_activity_xiranite_enr_box_1",
+      "name": "实验龙泡泡重壳生产",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_nugget",
+          "amount": 1
+        },
+        {
+          "itemId": "item_gas_inert",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_box",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "component_activity_copper_poly_cmpt",
+      "name": "实验息壤铜零件生产",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_copper_poly",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_copper_poly_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_glass_cmpt_from_quartz_glass_basic",
+      "name": "紫晶零件 ← 紫晶纤维",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_glass",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_glass_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_component_glass_enr_cmpt_from_quartz_enr_basic",
+      "name": "高晶零件 ← 高晶纤维",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_enr",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_glass_enr_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_originium_enr_powder_from_originium_and_moss_powder_basic",
+      "name": "致密源石粉末 ← 源石粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_originium_powder",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_originium_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_carbon_enr_powder_from_carbon_and_moss_powder_basic",
+      "name": "致密碳粉末 ← 碳粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_carbon_powder",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_crystal_enr_powder_from_crystal_and_moss_powder_basic",
+      "name": "致密晶体粉末 ← 晶体外壳粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_crystal_powder",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_crystal_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_moss_enr_powder_1_from_moss_powder_1_and_moss_powder_basic",
+      "name": "细磨荞花粉末 ← 荞花粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_powder_1",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_enr_powder_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_thickener_moss_enr_powder_2_from_moss_powder_2_and_moss_powder_basic",
+      "name": "细磨柑实粉末 ← 柑实粉末 + 砂叶粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_moss_powder_2",
+          "amount": 2
+        },
+        {
+          "itemId": "item_plant_moss_powder_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_moss_enr_powder_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_battery_from_iron_cmpt_and_originium_enr_powder_basic",
+      "name": "高容谷地电池 ← 钢制零件 + 致密源石粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_enr_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_originium_enr_powder",
+          "amount": 15
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_proc_battery_3",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_bomb_from_glass_cmpt_and_bbflower_powder_basic",
+      "name": "工业爆炸物 ← 紫晶零件 + 酮化灌木粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_glass_cmpt",
+          "amount": 5
+        },
+        {
+          "itemId": "item_plant_bbflower_powder_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_proc_bomb_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_battery_1_from_glass_cmpt_and_originium_powder_basic",
+      "name": "低容谷地电池 ← 紫晶零件 + 源石粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_glass_cmpt",
+          "amount": 5
+        },
+        {
+          "itemId": "item_originium_powder",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_proc_battery_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_battery_2_from_iron_cmpt_and_originium_powder_basic",
+      "name": "中容谷地电池 ← 铁制零件 + 源石粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_originium_powder",
+          "amount": 15
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_proc_battery_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_battery_4_from_xiranite_and_originium_enr_powder_basic",
+      "name": "低容武陵电池 ← 息壤 + 致密源石粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 5
+        },
+        {
+          "itemId": "item_originium_enr_powder",
+          "amount": 15
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_proc_battery_4",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_bottled_rec_hp_4_from_iron_cmpt_and_iron_bottle_filled_grass_2_basic",
+      "name": "芽针针剂 ← 铁制零件 + 蓝铁瓶 + 芽针溶液",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_iron_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_rec_hp_4",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_bottled_food_4_from_iron_cmpt_and_iron_bottle_filled_grass_1_basic",
+      "name": "锦草软饮 ← 铁制零件 + 蓝铁瓶 + 锦草溶液",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_iron_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_liquid_plant_grass_1",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_food_4",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_bottled_rec_hp_5_from_copper_cmpt_and_copper_bottle_filled_grass_2_basic",
+      "name": "优质芽针针剂 ← 赤铜零件 + 赤铜瓶 + 芽针溶液",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_copper_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_rec_hp_5",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_bottled_food_5_from_copper_cmpt_and_copper_bottle_filled_grass_1_basic",
+      "name": "优质锦草软饮 ← 赤铜零件 + 赤铜瓶 + 锦草溶液",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_cmpt",
+          "amount": 10
+        },
+        {
+          "itemId": "item_copper_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_liquid_plant_grass_1",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_food_5",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_activity_xiranite_enr_tool_from_activity_xiranite_enr_cmpt_and_copper_enr_basic",
+      "name": "实验玉铜发散器 ← 实验重息壤零件 + 赫铜块",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_cmpt",
+          "amount": 1
+        },
+        {
+          "itemId": "item_copper_enr",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_tool",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_activity_xiranite_hulu_from_activity_xiranite_bottle_and_activity_xiranite_cmpt_basic",
+      "name": "息壤葫芦 ← 实验息壤瓶 + 实验息壤零件",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_activity_xiranite_cmpt",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_hulu",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_packaging_activity_xiranite_enr_hulu_from_activity_xiranite_enr_bottle_filled_liquid_plant_grass_2_and_activity_xiranite_enr_tool_basic",
+      "name": "息壤玉葫芦 ← 实验重息壤瓶 + 芽针溶液 + 实验玉铜发散器",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_bottle",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 1
+        },
+        {
+          "itemId": "item_activity_xiranite_enr_tool",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_hulu",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "tools_proc_activity_xiranite_copper_tool_1",
+      "name": "实验铜骨骼合成",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_cmpt",
+          "amount": 4
+        },
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_copper_xiranite_tool",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "tools_proc_activity_xiranite_lung",
+      "name": "息壤龙泡泡合成",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_box",
+          "amount": 5
+        },
+        {
+          "itemId": "item_activity_copper_xiranite_tool",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_lung",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "tools_proc_activity_copper_poly_tool_1",
+      "name": "实验息壤铜骨骼合成",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_copper_poly_cmpt",
+          "amount": 1
+        },
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_copper_poly_tool",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "tools_proc_activity_xiranite_enr_lung",
+      "name": "重息壤龙泡泡合成",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_box",
+          "amount": 1
+        },
+        {
+          "itemId": "item_activity_copper_poly_tool",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_lung",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_winder_equip_script_1_from_crystal_shell_and_quartz_glass_basic",
+      "name": "紫晶装备原件 ← 晶体外壳 + 紫晶纤维",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_crystal_shell",
+          "amount": 5
+        },
+        {
+          "itemId": "item_quartz_glass",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_winder_equip_script_2_from_crystal_shell_and_iron_nugget_basic",
+      "name": "蓝铁装备原件 ← 晶体外壳 + 蓝铁块",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_crystal_shell",
+          "amount": 10
+        },
+        {
+          "itemId": "item_iron_nugget",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_winder_equip_script_3_from_crystal_enr_and_quartz_enr_basic",
+      "name": "高晶装备原件 ← 密制晶体 + 高晶纤维",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_crystal_enr",
+          "amount": 10
+        },
+        {
+          "itemId": "item_quartz_enr",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_3",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_winder_equip_script_4_from_crystal_enr_and_xiranite_powder_basic",
+      "name": "息壤装备原件 ← 密制晶体 + 息壤",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_crystal_enr",
+          "amount": 10
+        },
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_4",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_winder_equip_script_4_2_from_copper_enr_cmpt_and_xiranite_enr_powder_basic",
+      "name": "赫铜装备原件 ← 赫铜零件 + 重息壤",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr_cmpt",
+          "amount": 2
+        },
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_4_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_filling_bottled_food_1_from_glass_bottle_and_moss_powder_2_basic",
+      "name": "柑实罐头 ← 紫晶质瓶 + 柑实粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_glass_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_plant_moss_powder_2",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_food_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_filling_bottled_food_2_from_iron_bottle_and_moss_powder_2_basic",
+      "name": "优质柑实罐头 ← 蓝铁瓶 + 柑实粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_bottle",
+          "amount": 10
+        },
+        {
+          "itemId": "item_plant_moss_powder_2",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_food_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_filling_bottled_food_3_from_iron_enr_bottle_and_moss_enr_powder_2_basic",
+      "name": "精选柑实罐头 ← 钢质瓶 + 细磨柑实粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_enr_bottle",
+          "amount": 10
+        },
+        {
+          "itemId": "item_plant_moss_enr_powder_2",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_food_3",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_filling_bottled_rec_hp_1_from_glass_bottle_and_moss_powder_1_basic",
+      "name": "荞愈胶囊 ← 紫晶质瓶 + 荞花粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_glass_bottle",
+          "amount": 5
+        },
+        {
+          "itemId": "item_plant_moss_powder_1",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_rec_hp_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_filling_bottled_rec_hp_2_from_iron_bottle_and_moss_powder_1_basic",
+      "name": "优质荞愈胶囊 ← 蓝铁瓶 + 荞花粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_bottle",
+          "amount": 10
+        },
+        {
+          "itemId": "item_plant_moss_powder_1",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_rec_hp_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_filling_bottled_rec_hp_3_from_iron_enr_bottle_and_moss_enr_powder_1_basic",
+      "name": "精选荞愈胶囊 ← 钢质瓶 + 细磨荞花粉末",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_iron_enr_bottle",
+          "amount": 10
+        },
+        {
+          "itemId": "item_plant_moss_enr_powder_1",
+          "amount": 10
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_bottled_rec_hp_3",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_dismantling_activity_xiranite_enr_bottle_grass_2_basic",
+      "name": "实验重息壤瓶 + 芽针溶液 ← 实验重息壤瓶 + 芽针溶液",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_bottle",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_bottle",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 5
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_iron_bottle_from_iron_nugget_basic",
+      "name": "蓝铁瓶 ← 蓝铁块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_nugget",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_copper_bottle_from_copper_nugget_basic",
+      "name": "赤铜瓶 ← 赤铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_glass_bottle_from_quartz_glass_basic",
+      "name": "紫晶质瓶 ← 紫晶纤维",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_glass",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_glass_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_iron_enr_bottle_from_iron_enr_basic",
+      "name": "钢质瓶 ← 钢块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_iron_enr",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_iron_enr_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_copper_enr_bottle_from_copper_enr_basic",
+      "name": "赫铜瓶 ← 赫铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_glass_enr_bottle_from_quartz_enr_basic",
+      "name": "高晶质瓶 ← 高晶纤维",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_quartz_enr",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_glass_enr_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_activity_xiranite_bottle_from_xiranite_powder_basic",
+      "name": "实验息壤瓶 ← 息壤",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_bottle",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_shaper_activity_xiranite_enr_bottle_from_xiranite_enr_powder_basic",
+      "name": "实验重息壤瓶 ← 重息壤",
+      "duration": 20,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_xiranite_enr_bottle",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "xiranite_oven_xiranite_powder_1",
+      "name": "精炼：息壤",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_carbon_enr",
+          "amount": 2
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "xiranite_oven_xiranite_powder_2",
+      "name": "惰气炼息壤",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "xiranite_oven_xiranite_enr_powder_1",
+      "name": "精炼：重息壤",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 10
+        },
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "xiranite_oven_muck_xiranite_1",
+      "name": "精炼：膨地啪",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_muck_feces_1",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_muck_xiranite_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_hydro_planter_grass_1_from_seed_1_and_water_basic",
+      "name": "锦草 ← 锦草种子 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_seed_1",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_grass_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_hydro_planter_grass_2_from_seed_2_and_water_basic",
+      "name": "芽针 ← 芽针种子 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_seed_2",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_grass_2",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_plant_grass_1_from_powder_and_water_basic",
+      "name": "锦草溶液 ← 锦草粉末 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_powder_1",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_plant_grass_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_plant_grass_1_from_powder_and_water_basic_large",
+      "name": "锦草溶液 ← 锦草粉末 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_powder_1",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_plant_grass_1",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_plant_grass_2_from_powder_and_water_basic",
+      "name": "芽针溶液 ← 芽针粉末 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_powder_2",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_plant_grass_2_from_powder_and_water_basic_large",
+      "name": "芽针溶液 ← 芽针粉末 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_grass_powder_2",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_plant_grass_2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_xiranite_from_xiranite_powder_and_water_basic",
+      "name": "液化息壤 ← 息壤 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_xiranite_from_xiranite_powder_and_water_basic_large",
+      "name": "液化息壤 ← 息壤 + 清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_xiranite_enr_from_xiranite_enr_powder_and_acid_basic",
+      "name": "液化重息壤 ← 重息壤 + 沉积酸",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_xiranite_enr_from_xiranite_enr_powder_and_acid_basic_large",
+      "name": "液化重息壤 ← 重息壤 + 沉积酸",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_copper_from_copper_powder_and_acid_basic",
+      "name": "赤铜溶液 ← 赤铜粉末 + 沉积酸",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_powder",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_copper",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_liquid_copper_from_copper_powder_and_acid_basic_large",
+      "name": "赤铜溶液 ← 赤铜粉末 + 沉积酸",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_powder",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_copper",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_copper_enr_from_liquid_copper_enr_and_iron_powder_basic",
+      "name": "赫铜块 + 污水 ← 赫铜溶液 + 蓝铁粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_copper_enr",
+          "amount": 2
+        },
+        {
+          "itemId": "item_iron_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_mix_pool_copper_enr_from_liquid_copper_enr_and_iron_powder_basic_large",
+      "name": "赫铜块 + 污水 ← 赫铜溶液 + 蓝铁粉末",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_copper_enr",
+          "amount": 2
+        },
+        {
+          "itemId": "item_iron_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_sewage",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_liquid_purifier_water_and_xiranite_poly_from_xiranite_lowpoly_basic",
+      "name": "清水 + 壤晶废液 ← 惰性壤晶废液",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite_lowpoly",
+          "amount": 4
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_xiranite_poly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_liquid_purifier_acid_and_copper_enr_from_copper_basic",
+      "name": "沉积酸 + 赫铜溶液 ← 赤铜溶液",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_copper",
+          "amount": 4
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        },
+        {
+          "itemId": "item_liquid_copper_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_dumper_void_liquid_acid_basic",
+      "name": "倾倒沉积酸",
+      "duration": 0.5,
+      "inputs": [
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_dumper_void_liquid_water_basic",
+      "name": "倾倒清水",
+      "duration": 0.5,
+      "inputs": [
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_transmuter_1_gastrans_xiranite_consumption_internal",
+      "name": "设备运行消耗",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_transmuter_1_liquidtrans_xiranite_consumption_internal",
+      "name": "设备运行消耗",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_transmuter_2_gastrans_xiranite_consumption_internal",
+      "name": "设备运行消耗",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_transmuter_2_solidtrans_xiranite_consumption_internal",
+      "name": "设备运行消耗",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_gas_diffuser_inert_gas_environment_basic",
+      "name": "惰气扩散",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_inert",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_gas_diffuser_water_gas_environment_basic",
+      "name": "水蒸气扩散",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_gas_diffuser_acid_gas_environment_basic",
+      "name": "酸气扩散",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_gas_diffuser_xiranite_gas_environment_basic",
+      "name": "息壤气扩散",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_miner_copper_ore_basic",
+      "name": "采集赤铜矿",
+      "duration": 3,
+      "inputs": [
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_ore",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "r_power_gen_originium_ore",
+      "name": "处理 源矿",
+      "duration": 8,
+      "inputs": [
+        {
+          "itemId": "item_originium_ore",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_power_gen_battery_1",
+      "name": "处理 低容谷地电池",
+      "duration": 40,
+      "inputs": [
+        {
+          "itemId": "item_proc_battery_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_power_gen_battery_2",
+      "name": "处理 中容谷地电池",
+      "duration": 40,
+      "inputs": [
+        {
+          "itemId": "item_proc_battery_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_power_gen_battery_3",
+      "name": "处理 高容谷地电池",
+      "duration": 40,
+      "inputs": [
+        {
+          "itemId": "item_proc_battery_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_power_gen_battery_4",
+      "name": "处理 低容武陵电池",
+      "duration": 40,
+      "inputs": [
+        {
+          "itemId": "item_proc_battery_4",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "r_power_gen_battery_5",
+      "name": "处理 中容武陵电池",
+      "duration": 40,
+      "inputs": [
+        {
+          "itemId": "item_proc_battery_5",
+          "amount": 1
+        }
+      ],
+      "outputs": [],
+      "power": 1
+    },
+    {
+      "id": "component_copper_enr2_cmpt_1",
+      "name": "配件：灼铜零件",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr2",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr2_cmpt",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "furnance_carbon_material_4",
+      "name": "精炼：原木→碳块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_tundra_wood",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_carbon_mtl",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "gas_reactor_gas_copper_enr2_1",
+      "name": "气体反应：气态灼铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 2
+        },
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper_enr2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "gas_reactor_activity_copper_poly_gas_1",
+      "name": "实验息壤铜气生产",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 2
+        },
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_copper_poly_gas",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_purifier_gas_copper_enr_1",
+      "name": "提纯：气态赫铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 2
+        },
+        {
+          "itemId": "item_filter_core",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_purifier_gas_copper_enr_2",
+      "name": "提纯：气态赫铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 2
+        },
+        {
+          "itemId": "item_filter_core",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_purifier_gas_xiranite_enr_1",
+      "name": "提纯：重息壤气",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 2
+        },
+        {
+          "itemId": "item_filter_core",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_xiranite_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_purifier_gas_xiranite_enr_2",
+      "name": "提纯：重息壤气",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 2
+        },
+        {
+          "itemId": "item_filter_core",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_xiranite_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "seedcollector_plant_sp_1",
+      "name": "采种：灰芦麦种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_sp_1",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_sp_seed_1",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "seedcollector_plant_sp_2",
+      "name": "采种：苦叶椒种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_sp_2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_sp_seed_2",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "seedcollector_plant_sp_3",
+      "name": "采种：琼叶参种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_sp_3",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_sp_seed_3",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "seedcollector_plant_sp_4",
+      "name": "采种：金石稻种子",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_plant_sp_4",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_plant_sp_seed_4",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "shaper_gas_copper_jar_1",
+      "name": "塑形：赤铜耐压罐",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 2
+        },
+        {
+          "itemId": "item_gas_inert",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_jar",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "tools_proc_filter_core_2",
+      "name": "封装：分离芯",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_jar",
+          "amount": 1
+        },
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_filter_core",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_gas_gas_acid_1",
+      "name": "液气转化：酸气",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_acid",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_gas_gas_copper_1",
+      "name": "液气转化：气态赤铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_copper",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_gas_gas_copper_enr_1",
+      "name": "液气转化：气态赫铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_copper_enr",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_gas_gas_water_1",
+      "name": "液气转化：水蒸气",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_water",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_gas_gas_xiranite_1",
+      "name": "液气转化：息壤气",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_gas_gas_xiranite_enr_1",
+      "name": "液气转化：重息壤气",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_liquid_xiranite_enr",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_xiranite_enr",
+          "amount": 5
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_liquid_liquid_acid_1",
+      "name": "气液转化：沉积酸",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_acid",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_acid",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_liquid_liquid_copper_1",
+      "name": "气液转化：赤铜溶液",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_copper",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_liquid_liquid_copper_enr_1",
+      "name": "气液转化：赫铜溶液",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_copper_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_liquid_liquid_water_1",
+      "name": "气液转化：清水",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_water",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_water",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_liquid_liquid_xiranite_1",
+      "name": "气液转化：液化息壤",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_1_liquid_liquid_xiranite_enr_1",
+      "name": "气液转化：液化重息壤",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite_enr",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_liquid_xiranite_enr",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_gas_gas_copper_1",
+      "name": "固气转化：气态赤铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_gas_gas_copper_enr2_1",
+      "name": "固气转化：气态灼铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper_enr2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_gas_gas_copper_enr_1",
+      "name": "固气转化：气态赫铜",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_activity_copper_poly_gas_1",
+      "name": "实验息壤铜气转化",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_activity_copper_poly",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_copper_poly_gas",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_gas_gas_xiranite_1",
+      "name": "固气转化：息壤气",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_gas_gas_xiranite_enr_1",
+      "name": "固气转化：重息壤气",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_gas_xiranite_enr",
+          "amount": 5
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_solid_copper_enr2_1",
+      "name": "气固转化：灼铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper_enr2",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr2",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_activity_copper_poly_1",
+      "name": "实验息壤铜锭转化",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_activity_copper_poly_gas",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_activity_copper_poly",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_solid_copper_enr_1",
+      "name": "气固转化：赫铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper_enr",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_enr",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_solid_copper_nugget_1",
+      "name": "气固转化：赤铜块",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_copper",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_copper_nugget",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_solid_xiranite_powder_1",
+      "name": "气固转化：息壤",
+      "duration": 2,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite",
+          "amount": 1
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_xiranite_powder",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "liquid_transmuter_2_solid_xiranite_enr_powder_1",
+      "name": "气固转化：重息壤",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_gas_xiranite_enr",
+          "amount": 5
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 2
+        }
+      ],
+      "power": 1
+    },
+    {
+      "id": "winder_equip_script_4_3",
+      "name": "装备原件：灼铜装备原件",
+      "duration": 10,
+      "inputs": [
+        {
+          "itemId": "item_copper_enr2_cmpt",
+          "amount": 1
+        },
+        {
+          "itemId": "item_xiranite_enr_powder",
+          "amount": 2
+        }
+      ],
+      "outputs": [
+        {
+          "itemId": "item_equip_script_4_3",
+          "amount": 1
+        }
+      ],
+      "power": 1
+    }
+  ]
+}
