@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { formatRate, itemFlows, itemNode, recipeNode, visibleNodes } from './model'
-import { initialPositions, recipePositions } from './layout'
-import { optimizeItemPositions } from './optimizeLayout'
+import { recipePositions, routePositions } from './layout'
+import { usePlannerStore } from './store'
+import type { LayoutView } from './store'
+import type { CSSProperties } from 'react'
 import type { NodeId, Point, Recipe, Registry, Solution } from './types'
 
-type Props = { registry: Registry; flowRecipes: Recipe[]; targetId: string | null; solution: Solution | null; fitOnLoad?: boolean; onSelectItem: (id: string) => void }
-type View = { x: number; y: number; scale: number }
+type Props = { registry: Registry; flowRecipes: Recipe[]; targetId: string | null; targetIds: string[]; solution: Solution | null; layoutView: LayoutView; savedView?: View; onViewChange: (view: LayoutView, camera: View) => void; fitOnLoad?: boolean; onSelectItem: (id: string) => void }
+export type View = { x: number; y: number; scale: number }
 type Edge = { key: string; from: NodeId; to: NodeId; x1: number; y1: number; x2: number; y2: number; recipeId: string; kind: 'input' | 'output'; unitRate: number; actualRate: number; labelX: number; labelY: number; unitX: number; unitY: number; unitAnchor: 'start' | 'end' }
 
 const ITEM_WIDTH = 54
@@ -21,23 +23,36 @@ function formatEdgeRate(value: number) {
   return value >= 1000 ? `${fixed(value / 1000)}k` : fixed(value)
 }
 
-export default function Canvas({ registry, flowRecipes, targetId, solution, fitOnLoad = false, onSelectItem }: Props) {
+export default function Canvas({ registry, flowRecipes, targetId, targetIds, solution, layoutView, savedView, onViewChange, fitOnLoad = false, onSelectItem }: Props) {
   const viewport = useRef<HTMLDivElement>(null)
-  const drag = useRef<{ type: 'pan' | 'node'; id?: NodeId; x: number; y: number } | null>(null)
-  const initialCentered = useRef(false)
-  const [view, setView] = useState<View>({ x: 60, y: 60, scale: 0.7 })
+  const drag = useRef<{ type: 'pan' | 'node'; id?: NodeId; x: number; y: number; position?: Point } | null>(null)
+  const initialCentered = useRef(Boolean(savedView))
+  const lastTarget = useRef(targetId)
+  const [view, setView] = useState<View>(() => savedView ?? { x: 60, y: 60, scale: 0.7 })
   const [overrides, setOverrides] = useState<Record<string, Point>>({})
   const [hoveredRecipe, setHoveredRecipe] = useState<string | null>(null)
+  const savedPositions = usePlannerStore((state) => state.layouts[layoutView])
+  const ensureLayout = usePlannerStore((state) => state.ensureLayout)
+  const optimizeLayout = usePlannerStore((state) => state.optimizeLayout)
+  const setNodePosition = usePlannerStore((state) => state.setNodePosition)
+  const lowFlowOpacity = usePlannerStore((state) => state.lowFlowOpacity)
+  const setLowFlowOpacity = usePlannerStore((state) => state.setLowFlowOpacity)
   const focused = useMemo(() => targetId ? visibleNodes(registry, targetId) : null, [registry, targetId])
-  const defaults = useMemo(() => initialPositions(registry), [registry])
-  const itemPositions = useMemo(() => ({ ...defaults, ...overrides }), [defaults, overrides])
+  const defaults = useMemo(() => routePositions(registry), [registry])
+  const itemPositions = useMemo(() => Object.fromEntries(registry.items.map((item) => {
+    const id = itemNode(item.id)
+    return [id, overrides[id] ?? savedPositions[id] ?? defaults[id]]
+  })) as Record<string, Point>, [registry, defaults, savedPositions, overrides])
   const positions = useMemo(() => ({ ...itemPositions, ...recipePositions(registry, itemPositions) }), [registry, itemPositions])
   const names = useMemo(() => new Map(registry.items.map((item) => [item.id, item.name])), [registry])
 
-  useEffect(() => { setOverrides({}); initialCentered.current = false }, [registry])
+  useEffect(() => { setOverrides({}); ensureLayout(layoutView, registry) }, [registry, layoutView, ensureLayout])
+  useEffect(() => { onViewChange(layoutView, view) }, [layoutView, view, onViewChange])
 
   useEffect(() => {
-    if (!targetId && initialCentered.current) return
+    const targetChanged = targetId !== lastTarget.current
+    lastTarget.current = targetId
+    if (initialCentered.current && (!targetId || !targetChanged)) return
     initialCentered.current = true
     if (fitOnLoad) {
       const points = Object.values(positions)
@@ -79,9 +94,11 @@ export default function Canvas({ registry, flowRecipes, targetId, solution, fitO
     const dx = event.clientX - drag.current.x
     const dy = event.clientY - drag.current.y
     if (drag.current.type === 'pan') setView((old) => ({ ...old, x: old.x + dx, y: old.y + dy }))
-    else if (drag.current.id) {
+    else if (drag.current.id && drag.current.position) {
       const id = drag.current.id
-      setOverrides((old) => ({ ...old, [id]: { x: (old[id] ?? defaults[id]).x + dx / view.scale, y: (old[id] ?? defaults[id]).y + dy / view.scale } }))
+      const position = { x: drag.current.position.x + dx / view.scale, y: drag.current.position.y + dy / view.scale }
+      drag.current.position = position
+      setOverrides((old) => ({ ...old, [id]: position }))
     }
     drag.current.x = event.clientX
     drag.current.y = event.clientY
@@ -132,16 +149,25 @@ export default function Canvas({ registry, flowRecipes, targetId, solution, fitO
       }
     }
   }
+  const recipeThroughput = new Map<string, number>()
+  for (const edge of edges) recipeThroughput.set(edge.recipeId, Math.max(recipeThroughput.get(edge.recipeId) ?? 0, edge.actualRate))
 
-  return <div className={`canvas ${focused ? 'has-focus' : ''}`} ref={viewport} onWheel={zoom} onPointerMove={pointerMove}
+  return <div className={`canvas ${focused ? 'has-focus' : ''}`} style={{ '--low-flow-opacity': lowFlowOpacity } as CSSProperties} ref={viewport} onWheel={zoom} onPointerMove={pointerMove}
     onPointerDown={(event) => { drag.current = { type: 'pan', x: event.clientX, y: event.clientY }; event.currentTarget.setPointerCapture(event.pointerId) }}
-    onPointerUp={() => { drag.current = null }} onPointerCancel={() => { drag.current = null }}>
+    onPointerUp={() => {
+      if (drag.current?.type === 'node' && drag.current.id && drag.current.position) {
+        const id = drag.current.id
+        setNodePosition(layoutView, id, drag.current.position)
+        setOverrides((old) => { const next = { ...old }; delete next[id]; return next })
+      }
+      drag.current = null
+    }} onPointerCancel={() => { drag.current = null; setOverrides({}) }}>
     <div className="canvas-grid" style={{ backgroundSize: `${24 * view.scale}px ${24 * view.scale}px`, backgroundPosition: `${view.x}px ${view.y}px`, opacity: view.scale < 0.3 ? 0 : 1 }} />
     <div className="canvas-stage" style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})` }}>
       <svg className="edge-layer" width="100%" height="100%">
-        {edges.map((edge) => <g key={edge.key} className={`edge-group ${focused && (!focused.has(edge.from) || !focused.has(edge.to)) ? 'faded' : ''}`}>
+        {edges.map((edge) => <g key={edge.key} className={`edge-group ${solution && edge.actualRate < 1 ? 'low-flow' : ''} ${focused && (!focused.has(edge.from) || !focused.has(edge.to)) ? 'faded' : ''}`}>
           <line x1={edge.x1} y1={edge.y1} x2={edge.x2} y2={edge.y2} className={`edge ${edge.kind} ${(solution?.rates[edge.recipeId] ?? 0) > 0.005 ? 'active' : ''}`}
-            style={solution ? { strokeWidth: Math.max(1, Math.ceil(edge.actualRate / 30)), opacity: edge.actualRate < 1 ? 0.5 : 1 } : undefined} />
+            style={solution ? { strokeWidth: Math.max(1, Math.ceil(edge.actualRate / 30)), opacity: 1 } : undefined} />
           <text x={edge.unitX} y={edge.unitY} textAnchor={edge.unitAnchor} className={`edge-label recipe-rate ${edge.kind} ${hoveredRecipe === edge.recipeId ? 'revealed' : ''}`}>{formatEdgeRate(edge.unitRate)}</text>
           {solution && <text x={edge.labelX} y={edge.labelY} textAnchor="middle" className={`edge-label flow-rate ${edge.kind}`}>{formatEdgeRate(edge.actualRate)}</text>}
         </g>)}
@@ -149,8 +175,8 @@ export default function Canvas({ registry, flowRecipes, targetId, solution, fitO
       {registry.items.map((item) => {
         const pos = positions[itemNode(item.id)]
         const flow = itemFlows(item, flowRecipes, solution)
-        return <div key={item.id} className={`graph-node item-node ${item.type === 'raw' ? 'raw' : ''} ${targetId === item.id ? 'selected' : ''} ${focused && !focused.has(itemNode(item.id)) ? 'faded' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${item.name} · 输入 ${formatRate(flow.produced + flow.source)}（含外部输入 ${formatRate(flow.source)}）· 输出 ${formatRate(flow.consumed)} · 净 ${formatRate(flow.net)} / 分`}
-          onPointerDown={(event) => { event.stopPropagation(); drag.current = { type: 'node', id: itemNode(item.id), x: event.clientX, y: event.clientY }; viewport.current?.setPointerCapture(event.pointerId) }}
+        return <div key={item.id} className={`graph-node item-node ${item.canExternalInput ? 'external' : ''} ${targetId === item.id ? 'selected' : ''} ${targetIds.includes(item.id) ? 'goal' : ''} ${solution && Math.max(flow.produced + flow.source, flow.consumed) < 1 ? 'low-flow' : ''} ${focused && !focused.has(itemNode(item.id)) ? 'faded' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${item.name} · 输入 ${formatRate(flow.produced + flow.source)}（含外部输入 ${formatRate(flow.source)}）· 输出 ${formatRate(flow.consumed)} · 净 ${formatRate(flow.net)} / 分`}
+          onPointerDown={(event) => { event.stopPropagation(); drag.current = { type: 'node', id: itemNode(item.id), x: event.clientX, y: event.clientY, position: pos }; viewport.current?.setPointerCapture(event.pointerId) }}
           onDoubleClick={() => onSelectItem(item.id)}>
           <div className="item-title">{item.name}</div>
           <div className="item-rates"><div className="item-in">入 {formatPortRate(flow.produced + flow.source)}</div><div className="item-out">出 {formatPortRate(flow.consumed)}</div><div className={`item-net ${flow.net < -0.01 ? 'negative' : ''}`}>净 {formatPortRate(flow.net)}</div></div>
@@ -159,7 +185,7 @@ export default function Canvas({ registry, flowRecipes, targetId, solution, fitO
       {registry.recipes.map((recipe) => {
         const pos = positions[recipeNode(recipe.id)]
         const rate = solution?.rates[recipe.id] ?? 0
-        return <div key={recipe.id} className={`graph-node recipe-node ${rate > 0.005 ? 'running' : ''} ${focused && !focused.has(recipeNode(recipe.id)) ? 'faded' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${recipe.name} · ${formatRate(rate)} 份配方效率 · 耗电 ${recipe.power}/份 · ${recipe.duration} 秒/次 · 输入 ${recipe.inputs.map((entry) => `${names.get(entry.itemId)} ${formatPortRate(entry.amount * 60 / recipe.duration)}`).join('、')} · 输出 ${recipe.outputs.map((entry) => `${names.get(entry.itemId)} ${formatPortRate(entry.amount * 60 / recipe.duration)}`).join('、')}`}
+        return <div key={recipe.id} className={`graph-node recipe-node ${rate > 0.005 ? 'running' : ''} ${solution && (recipeThroughput.get(recipe.id) ?? 0) < 1 ? 'low-flow' : ''} ${focused && !focused.has(recipeNode(recipe.id)) ? 'faded' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${recipe.name} · ${formatRate(rate)} 份配方效率 · 耗电 ${recipe.power}/份 · ${recipe.duration} 秒/次 · 输入 ${recipe.inputs.map((entry) => `${names.get(entry.itemId)} ${formatPortRate(entry.amount * 60 / recipe.duration)}`).join('、')} · 输出 ${recipe.outputs.map((entry) => `${names.get(entry.itemId)} ${formatPortRate(entry.amount * 60 / recipe.duration)}`).join('、')}`}
           onPointerEnter={() => setHoveredRecipe(recipe.id)} onPointerLeave={() => setHoveredRecipe(null)}
           onPointerDown={(event) => event.stopPropagation()}>
           <span className="recipe-factor">{rate.toFixed(1)}</span>
@@ -167,8 +193,13 @@ export default function Canvas({ registry, flowRecipes, targetId, solution, fitO
       })}
     </div>
     <div className="canvas-hint">{fitOnLoad ? '仅显示目标上游 · 节点速率按全图计算 · 拖动平移与产物' : '拖动平移 · 滚轮缩放 · 拖动产物 · 双击产物聚焦'}</div>
-    <button className="layout-button" onPointerDown={(event) => event.stopPropagation()} onClick={() => setOverrides(optimizeItemPositions(registry, itemPositions))}>优化排布</button>
-    <button className="fit-button" onPointerDown={(event) => event.stopPropagation()} onClick={fitAll}>适配全图</button>
-    <div className="zoom-badge">{Math.round(view.scale * 100)}% · {registry.items.length} 产物 · {registry.recipes.length} 配方</div>
+    <div className="canvas-actions" onPointerDown={(event) => event.stopPropagation()} onWheel={(event) => event.stopPropagation()}>
+      <button className="layout-button" onClick={() => optimizeLayout(layoutView, registry)}>优化排布</button>
+      <button className="fit-button" onClick={fitAll}>适配全图</button>
+      <div className="zoom-badge">
+        <label className="opacity-control"><span>透明度 {Math.round((1 - lowFlowOpacity) * 100)}%</span><input aria-label="低流量透明度" type="range" min="0" max="100" step="1" value={Math.round((1 - lowFlowOpacity) * 100)} onChange={(event) => setLowFlowOpacity(1 - Number(event.target.value) / 100)} /></label>
+        <span>{Math.round(view.scale * 100)}% · {registry.items.length} 产物 · {registry.recipes.length} 配方</span>
+      </div>
+    </div>
   </div>
 }

@@ -1,7 +1,37 @@
-import type { Item, NodeId, Recipe, Registry, Solution } from './types'
+import type { Item, NodeId, Recipe, Registry, Solution, Supply } from './types'
 
 export const itemNode = (id: string): NodeId => `item:${id}`
 export const recipeNode = (id: string): NodeId => `recipe:${id}`
+
+export function unavailableItemIds(registry: Registry, disabledIds: string[], supplies: Supply[]): Set<string> {
+  const productionDisabled = new Set(disabledIds)
+  const limits = new Map(supplies.map((supply) => [supply.itemId, supply.limit]))
+  const hasExternalInput = (item: Item) => item.canExternalInput && limits.get(item.id) !== 0
+  const unavailable = new Set(registry.items.filter((item) => !hasExternalInput(item) && (!item.canProduce || productionDisabled.has(item.id))).map((item) => item.id))
+  const producers = producerMap(registry.recipes)
+  let changed = true
+  while (changed) {
+    changed = false
+    for (const item of registry.items) {
+      if (hasExternalInput(item) || unavailable.has(item.id)) continue
+      const producingRecipes = producers.get(item.id) ?? []
+      if (!producingRecipes.length || producingRecipes.some((recipe) => recipe.inputs.every((entry) => !unavailable.has(entry.itemId)) && recipe.outputs.every((entry) => !unavailable.has(entry.itemId) && !productionDisabled.has(entry.itemId)))) continue
+      unavailable.add(item.id)
+      changed = true
+    }
+  }
+  return unavailable
+}
+
+export function enabledRegistry(registry: Registry, disabledIds: string[], supplies: Supply[]): Registry {
+  const unavailable = unavailableItemIds(registry, disabledIds, supplies)
+  const productionDisabled = new Set(disabledIds)
+  return {
+    ...registry,
+    items: registry.items.filter((item) => !unavailable.has(item.id)),
+    recipes: registry.recipes.filter((recipe) => recipe.outputs.every((entry) => !productionDisabled.has(entry.itemId)) && [...recipe.inputs, ...recipe.outputs].every((entry) => !unavailable.has(entry.itemId))),
+  }
+}
 
 export function producerMap(recipes: Recipe[]) {
   const map = new Map<string, Recipe[]>()
@@ -19,13 +49,13 @@ export function visibleNodes(registry: Registry, targetId: string | null): Set<N
     ...registry.recipes.map((recipe) => recipeNode(recipe.id)),
   ])
   const producers = producerMap(registry.recipes)
-  const rawItems = new Set(registry.items.filter((item) => item.type === 'raw').map((item) => item.id))
+  const sourceOnlyItems = new Set(registry.items.filter((item) => !item.canProduce).map((item) => item.id))
   const seen = new Set<NodeId>()
   const walked = new Set<string>()
   const walk = (itemId: string) => {
     const id = itemNode(itemId)
     seen.add(id)
-    if (walked.has(itemId) || rawItems.has(itemId)) return
+    if (walked.has(itemId) || sourceOnlyItems.has(itemId)) return
     walked.add(itemId)
     for (const recipe of producers.get(itemId) ?? []) {
       seen.add(recipeNode(recipe.id))

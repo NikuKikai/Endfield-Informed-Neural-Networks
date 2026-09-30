@@ -1,6 +1,5 @@
 import type { Point, Recipe, Registry } from './types'
 import { itemNode, recipeNode } from './model'
-import { optimizeItemPositions } from './optimizeLayout'
 
 const LEFT = 80
 const TOP = 100
@@ -13,7 +12,7 @@ type Route = { items: string[]; terminal: boolean }
 export function routePositions(registry: Registry): Record<string, Point> {
   const producers = new Map<string, Recipe[]>()
   const consumers = new Map<string, string[]>()
-  const raw = new Set(registry.items.filter((item) => item.type === 'raw').map((item) => item.id))
+  const raw = new Set(registry.items.filter((item) => item.canExternalInput).map((item) => item.id))
   for (const recipe of registry.recipes) {
     for (const output of recipe.outputs) producers.set(output.itemId, [...(producers.get(output.itemId) ?? []), recipe])
     for (const input of recipe.inputs) consumers.set(input.itemId, [...(consumers.get(input.itemId) ?? []), ...recipe.outputs.map((output) => output.itemId)])
@@ -71,10 +70,6 @@ export function routePositions(registry: Registry): Record<string, Point> {
   }
   for (const item of registry.items) place(item.id, raw.has(item.id) ? 0 : 1, 0)
   return positions
-}
-
-export function initialPositions(registry: Registry): Record<string, Point> {
-  return optimizeItemPositions(registry, routePositions(registry))
 }
 
 function average(points: Point[]): Point | null {

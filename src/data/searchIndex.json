@@ -1,0 +1,518 @@
+{
+  "item_bottled_food_1": {
+    "initials": "gsgt",
+    "fullPinyin": "ganshiguantou"
+  },
+  "item_bottled_food_2": {
+    "initials": "yzgsgt",
+    "fullPinyin": "youzhiganshiguantou"
+  },
+  "item_bottled_food_3": {
+    "initials": "jxgsgt",
+    "fullPinyin": "jingxuanganshiguantou"
+  },
+  "item_bottled_food_4": {
+    "initials": "jcry",
+    "fullPinyin": "jincaoruanyin"
+  },
+  "item_bottled_food_5": {
+    "initials": "yzjcry",
+    "fullPinyin": "youzhijincaoruanyin"
+  },
+  "item_bottled_rec_hp_1": {
+    "initials": "qyjn",
+    "fullPinyin": "qiaoyujiaonang"
+  },
+  "item_bottled_rec_hp_2": {
+    "initials": "yzqyjn",
+    "fullPinyin": "youzhiqiaoyujiaonang"
+  },
+  "item_bottled_rec_hp_3": {
+    "initials": "jxqyjn",
+    "fullPinyin": "jingxuanqiaoyujiaonang"
+  },
+  "item_bottled_rec_hp_4": {
+    "initials": "yzzj",
+    "fullPinyin": "yazhenzhenji"
+  },
+  "item_bottled_rec_hp_5": {
+    "initials": "yzyzzj",
+    "fullPinyin": "youzhiyazhenzhenji"
+  },
+  "item_carbon_enr": {
+    "initials": "wdtk",
+    "fullPinyin": "wendingtankuai"
+  },
+  "item_carbon_enr_powder": {
+    "initials": "zmtfm",
+    "fullPinyin": "zhimitanfenmo"
+  },
+  "item_carbon_mtl": {
+    "initials": "tk",
+    "fullPinyin": "tankuai"
+  },
+  "item_carbon_powder": {
+    "initials": "tfm",
+    "fullPinyin": "tanfenmo"
+  },
+  "item_crystal_enr": {
+    "initials": "mzjt",
+    "fullPinyin": "mizhijingti"
+  },
+  "item_crystal_enr_powder": {
+    "initials": "zmjtfm",
+    "fullPinyin": "zhimijingtifenmo"
+  },
+  "item_crystal_powder": {
+    "initials": "jtwkfm",
+    "fullPinyin": "jingtiwaikefenmo"
+  },
+  "item_crystal_shell": {
+    "initials": "jtwk",
+    "fullPinyin": "jingtiwaike"
+  },
+  "item_copper_ore": {
+    "initials": "ctk",
+    "fullPinyin": "chitongkuang"
+  },
+  "item_copper_bottle": {
+    "initials": "ctp",
+    "fullPinyin": "chitongping"
+  },
+  "item_copper_enr_bottle": {
+    "initials": "htp",
+    "fullPinyin": "hetongping"
+  },
+  "item_copper_enr": {
+    "initials": "htk",
+    "fullPinyin": "hetongkuai"
+  },
+  "item_copper_powder": {
+    "initials": "ctfm",
+    "fullPinyin": "chitongfenmo"
+  },
+  "item_copper_nugget": {
+    "initials": "ctk",
+    "fullPinyin": "chitongkuai"
+  },
+  "item_copper_enr2": {
+    "initials": "ztk",
+    "fullPinyin": "zhuotongkuai"
+  },
+  "item_copper_enr2_cmpt": {
+    "initials": "ztlj",
+    "fullPinyin": "zhuotonglingjian"
+  },
+  "item_copper_jar": {
+    "initials": "ctnyg",
+    "fullPinyin": "chitongnaiyaguan"
+  },
+  "item_liquid_acid": {
+    "initials": "cjs",
+    "fullPinyin": "chenjisuan"
+  },
+  "item_liquid_copper": {
+    "initials": "ctry",
+    "fullPinyin": "chitongrongye"
+  },
+  "item_liquid_copper_enr": {
+    "initials": "htry",
+    "fullPinyin": "hetongrongye"
+  },
+  "item_liquid_sewage": {
+    "initials": "ws",
+    "fullPinyin": "wushui"
+  },
+  "item_liquid_xiranite_poly": {
+    "initials": "rjfy",
+    "fullPinyin": "rangjingfeiye"
+  },
+  "item_liquid_xiranite_lowpoly": {
+    "initials": "dxrjfy",
+    "fullPinyin": "duoxingrangjingfeiye"
+  },
+  "item_liquid_xiranite_enr": {
+    "initials": "yhzxr",
+    "fullPinyin": "yehuazhongxirang"
+  },
+  "item_xiranite_poly": {
+    "initials": "rj",
+    "fullPinyin": "rangjing"
+  },
+  "item_activity_xiranite_cmpt": {
+    "initials": "syxrlj",
+    "fullPinyin": "shiyanxiranglingjian"
+  },
+  "item_activity_xiranite_enr_cmpt": {
+    "initials": "syzxrlj",
+    "fullPinyin": "shiyanzhongxiranglingjian"
+  },
+  "item_activity_xiranite_bottle": {
+    "initials": "syxrp",
+    "fullPinyin": "shiyanxirangping"
+  },
+  "item_activity_xiranite_enr_bottle": {
+    "initials": "syzxrp",
+    "fullPinyin": "shiyanzhongxirangping"
+  },
+  "item_activity_xiranite_nugget": {
+    "initials": "syxrk",
+    "fullPinyin": "shiyanxirangkuai"
+  },
+  "item_activity_xiranite_box": {
+    "initials": "sylppwk",
+    "fullPinyin": "shiyanlongpaopaowaike"
+  },
+  "item_activity_copper_xiranite_tool": {
+    "initials": "sytgg",
+    "fullPinyin": "shiyantongguge"
+  },
+  "item_activity_xiranite_lung": {
+    "initials": "xrlpp",
+    "fullPinyin": "xiranglongpaopao"
+  },
+  "item_activity_xiranite_enr_nugget": {
+    "initials": "syzxrk",
+    "fullPinyin": "shiyanzhongxirangkuai"
+  },
+  "item_activity_xiranite_enr_box": {
+    "initials": "sylppzk",
+    "fullPinyin": "shiyanlongpaopaozhongke"
+  },
+  "item_activity_copper_poly_gas": {
+    "initials": "syxrtq",
+    "fullPinyin": "shiyanxirangtongqi"
+  },
+  "item_activity_copper_poly": {
+    "initials": "syxrtd",
+    "fullPinyin": "shiyanxirangtongding"
+  },
+  "item_activity_copper_poly_cmpt": {
+    "initials": "syxrtlj",
+    "fullPinyin": "shiyanxirangtonglingjian"
+  },
+  "item_activity_copper_poly_tool": {
+    "initials": "syxrtgg",
+    "fullPinyin": "shiyanxirangtongguge"
+  },
+  "item_activity_xiranite_enr_lung": {
+    "initials": "zxrlpp",
+    "fullPinyin": "zhongxiranglongpaopao"
+  },
+  "item_activity_xiranite_enr_tool": {
+    "initials": "syytfsq",
+    "fullPinyin": "shiyanyutongfasanqi"
+  },
+  "item_activity_xiranite_hulu": {
+    "initials": "xrhl",
+    "fullPinyin": "xiranghulu"
+  },
+  "item_activity_xiranite_enr_hulu": {
+    "initials": "xryhl",
+    "fullPinyin": "xirangyuhulu"
+  },
+  "item_copper_cmpt": {
+    "initials": "ctlj",
+    "fullPinyin": "chitonglingjian"
+  },
+  "item_copper_enr_cmpt": {
+    "initials": "htlj",
+    "fullPinyin": "hetonglingjian"
+  },
+  "item_equip_script_1": {
+    "initials": "zjzbyj",
+    "fullPinyin": "zijingzhuangbeiyuanjian"
+  },
+  "item_equip_script_2": {
+    "initials": "ltzbyj",
+    "fullPinyin": "lantiezhuangbeiyuanjian"
+  },
+  "item_equip_script_3": {
+    "initials": "gjzbyj",
+    "fullPinyin": "gaojingzhuangbeiyuanjian"
+  },
+  "item_equip_script_4": {
+    "initials": "xrzbyj",
+    "fullPinyin": "xirangzhuangbeiyuanjian"
+  },
+  "item_equip_script_4_1": {
+    "initials": "ctzbyj",
+    "fullPinyin": "chitongzhuangbeiyuanjian"
+  },
+  "item_equip_script_4_2": {
+    "initials": "htzbyj",
+    "fullPinyin": "hetongzhuangbeiyuanjian"
+  },
+  "item_equip_script_4_3": {
+    "initials": "ztzbyj",
+    "fullPinyin": "zhuotongzhuangbeiyuanjian"
+  },
+  "item_filter_core": {
+    "initials": "flx",
+    "fullPinyin": "fenlixin"
+  },
+  "item_glass_bottle": {
+    "initials": "zjzp",
+    "fullPinyin": "zijingzhiping"
+  },
+  "item_glass_cmpt": {
+    "initials": "zjlj",
+    "fullPinyin": "zijinglingjian"
+  },
+  "item_glass_enr_bottle": {
+    "initials": "gjzp",
+    "fullPinyin": "gaojingzhiping"
+  },
+  "item_glass_enr_cmpt": {
+    "initials": "gjlj",
+    "fullPinyin": "gaojinglingjian"
+  },
+  "item_iron_bottle": {
+    "initials": "ltp",
+    "fullPinyin": "lantieping"
+  },
+  "item_iron_cmpt": {
+    "initials": "tzlj",
+    "fullPinyin": "tiezhilingjian"
+  },
+  "item_iron_enr": {
+    "initials": "gk",
+    "fullPinyin": "gangkuai"
+  },
+  "item_iron_enr_bottle": {
+    "initials": "gzp",
+    "fullPinyin": "gangzhiping"
+  },
+  "item_iron_enr_cmpt": {
+    "initials": "gzlj",
+    "fullPinyin": "gangzhilingjian"
+  },
+  "item_iron_enr_powder": {
+    "initials": "zmltfm",
+    "fullPinyin": "zhimilantiefenmo"
+  },
+  "item_iron_nugget": {
+    "initials": "ltk",
+    "fullPinyin": "lantiekuai"
+  },
+  "item_iron_powder": {
+    "initials": "ltfm",
+    "fullPinyin": "lantiefenmo"
+  },
+  "item_liquid_plant_grass_1": {
+    "initials": "jcry",
+    "fullPinyin": "jincaorongye"
+  },
+  "item_liquid_plant_grass_2": {
+    "initials": "yzry",
+    "fullPinyin": "yazhenrongye"
+  },
+  "item_liquid_water": {
+    "initials": "qs",
+    "fullPinyin": "qingshui"
+  },
+  "item_liquid_xiranite": {
+    "initials": "yhxr",
+    "fullPinyin": "yehuaxirang"
+  },
+  "item_gas_xiranite": {
+    "initials": "xrq",
+    "fullPinyin": "xirangqi"
+  },
+  "item_gas_xiranite_enr": {
+    "initials": "zxrq",
+    "fullPinyin": "zhongxirangqi"
+  },
+  "item_gas_copper": {
+    "initials": "qtct",
+    "fullPinyin": "qitaichitong"
+  },
+  "item_gas_copper_enr": {
+    "initials": "qtht",
+    "fullPinyin": "qitaihetong"
+  },
+  "item_gas_water": {
+    "initials": "szq",
+    "fullPinyin": "shuizhengqi"
+  },
+  "item_gas_copper_enr2": {
+    "initials": "qtzt",
+    "fullPinyin": "qitaizhuotong"
+  },
+  "item_muck_xiranite_1": {
+    "initials": "pdp",
+    "fullPinyin": "pengdipa"
+  },
+  "item_originium_enr_powder": {
+    "initials": "zmysfm",
+    "fullPinyin": "zhimiyuanshifenmo"
+  },
+  "item_originium_powder": {
+    "initials": "ysfm",
+    "fullPinyin": "yuanshifenmo"
+  },
+  "item_plant_bbflower_1": {
+    "initials": "thgm",
+    "fullPinyin": "tonghuaguanmu"
+  },
+  "item_plant_bbflower_powder_1": {
+    "initials": "thgmfm",
+    "fullPinyin": "tonghuaguanmufenmo"
+  },
+  "item_plant_bbflower_seed_1": {
+    "initials": "thsz",
+    "fullPinyin": "tonghuashuzhong"
+  },
+  "item_plant_grass_1": {
+    "initials": "jc",
+    "fullPinyin": "jincao"
+  },
+  "item_plant_grass_2": {
+    "initials": "yz",
+    "fullPinyin": "yazhen"
+  },
+  "item_plant_grass_powder_1": {
+    "initials": "jcfm",
+    "fullPinyin": "jincaofenmo"
+  },
+  "item_plant_grass_powder_2": {
+    "initials": "yzfm",
+    "fullPinyin": "yazhenfenmo"
+  },
+  "item_plant_grass_seed_1": {
+    "initials": "jczz",
+    "fullPinyin": "jincaozhongzi"
+  },
+  "item_plant_grass_seed_2": {
+    "initials": "yzzz",
+    "fullPinyin": "yazhenzhongzi"
+  },
+  "item_plant_moss_1": {
+    "initials": "qh",
+    "fullPinyin": "qiaohua"
+  },
+  "item_plant_moss_2": {
+    "initials": "gs",
+    "fullPinyin": "ganshi"
+  },
+  "item_plant_moss_3": {
+    "initials": "sy",
+    "fullPinyin": "shaye"
+  },
+  "item_plant_moss_enr_powder_1": {
+    "initials": "xmqhfm",
+    "fullPinyin": "ximoqiaohuafenmo"
+  },
+  "item_plant_moss_enr_powder_2": {
+    "initials": "xmgsfm",
+    "fullPinyin": "ximoganshifenmo"
+  },
+  "item_plant_moss_powder_1": {
+    "initials": "qhfm",
+    "fullPinyin": "qiaohuafenmo"
+  },
+  "item_plant_moss_powder_2": {
+    "initials": "gsfm",
+    "fullPinyin": "ganshifenmo"
+  },
+  "item_plant_moss_powder_3": {
+    "initials": "syfm",
+    "fullPinyin": "shayefenmo"
+  },
+  "item_plant_moss_seed_1": {
+    "initials": "qhzz",
+    "fullPinyin": "qiaohuazhongzi"
+  },
+  "item_plant_moss_seed_2": {
+    "initials": "gszz",
+    "fullPinyin": "ganshizhongzi"
+  },
+  "item_plant_moss_seed_3": {
+    "initials": "syzz",
+    "fullPinyin": "shayezhongzi"
+  },
+  "item_plant_sp_1": {
+    "initials": "hlm",
+    "fullPinyin": "huilumai"
+  },
+  "item_plant_sp_2": {
+    "initials": "kyj",
+    "fullPinyin": "kuyejiao"
+  },
+  "item_plant_sp_3": {
+    "initials": "qyc",
+    "fullPinyin": "qiongyecan"
+  },
+  "item_plant_sp_4": {
+    "initials": "jsd",
+    "fullPinyin": "jinshidao"
+  },
+  "item_plant_sp_seed_1": {
+    "initials": "hlmzz",
+    "fullPinyin": "huilumaizhongzi"
+  },
+  "item_plant_sp_seed_2": {
+    "initials": "kyjzz",
+    "fullPinyin": "kuyejiaozhongzi"
+  },
+  "item_plant_sp_seed_3": {
+    "initials": "qyczz",
+    "fullPinyin": "qiongyecanzhongzi"
+  },
+  "item_plant_sp_seed_4": {
+    "initials": "jsdzz",
+    "fullPinyin": "jinshidaozhongzi"
+  },
+  "item_proc_battery_1": {
+    "initials": "drgddc",
+    "fullPinyin": "dironggudidianchi"
+  },
+  "item_proc_battery_2": {
+    "initials": "zrgddc",
+    "fullPinyin": "zhongronggudidianchi"
+  },
+  "item_proc_battery_3": {
+    "initials": "grgddc",
+    "fullPinyin": "gaoronggudidianchi"
+  },
+  "item_proc_battery_4": {
+    "initials": "drwldc",
+    "fullPinyin": "dirongwulingdianchi"
+  },
+  "item_proc_battery_5": {
+    "initials": "zrwldc",
+    "fullPinyin": "zhongrongwulingdianchi"
+  },
+  "item_proc_bomb_1": {
+    "initials": "gybzw",
+    "fullPinyin": "gongyebaozhawu"
+  },
+  "item_quartz_enr": {
+    "initials": "gjxw",
+    "fullPinyin": "gaojingxianwei"
+  },
+  "item_quartz_enr_powder": {
+    "initials": "gjfm",
+    "fullPinyin": "gaojingfenmo"
+  },
+  "item_quartz_glass": {
+    "initials": "zjxw",
+    "fullPinyin": "zijingxianwei"
+  },
+  "item_quartz_powder": {
+    "initials": "zjfm",
+    "fullPinyin": "zijingfenmo"
+  },
+  "item_xiranite_enr_powder": {
+    "initials": "zxr",
+    "fullPinyin": "zhongxirang"
+  },
+  "item_xiranite_powder": {
+    "initials": "xr",
+    "fullPinyin": "xirang"
+  },
+  "item_gas_acid": {
+    "initials": "sq",
+    "fullPinyin": "suanqi"
+  }
+}

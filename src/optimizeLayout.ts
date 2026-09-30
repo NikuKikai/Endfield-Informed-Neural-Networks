@@ -5,15 +5,12 @@ const IDEAL_LENGTH = 85
 const ITEM_SPACING = 160
 const RAW_X = 80
 const PRODUCT_MIN_X = 180
-const FIRST_STAGE_MIN_STEPS = 350
-const FIRST_STAGE_MAX_STEPS = 6000
-const CONVERGENCE_INTERVAL = 100
-const CONVERGENCE_TOLERANCE = 1e-4
-
 type RecipeGeometry = { indices: number[]; weights: number[]; biasX: number; edges: number[] }
 
-export function optimizeItemPositions(registry: Registry, initial: Record<string, Point>): Record<string, Point> {
+export function optimizeItemPositions(registry: Registry, initial: Record<string, Point>, movableIds?: Set<string>): Record<string, Point> {
   const items = registry.items
+  if (!items.length) return {}
+  const movable = items.map((item) => !movableIds || movableIds.has(item.id))
   const index = new Map(items.map((item, position) => [item.id, position]))
   const edgeCounts = new Uint16Array(items.length)
   for (const recipe of registry.recipes) for (const entry of [...recipe.inputs, ...recipe.outputs]) edgeCounts[index.get(entry.itemId)!]++
@@ -41,30 +38,11 @@ export function optimizeItemPositions(registry: Registry, initial: Record<string
     }
   })
 
-  const lineLoss = () => {
-    let loss = 0
-    for (const recipe of recipes) {
-      let cx = recipe.biasX
-      let cy = 0
-      recipe.indices.forEach((id, offset) => {
-        cx += x[id] * recipe.weights[offset]
-        cy += y[id] * recipe.weights[offset]
-      })
-      for (const id of recipe.edges) {
-        const delta = Math.hypot(x[id] - cx, y[id] - cy) - IDEAL_LENGTH
-        loss += delta * delta
-      }
-    }
-    return loss
-  }
-
-  const optimize = (steps: number, stepSize: number, collisions: boolean) => {
+  const optimize = (steps: number, stepSize: number) => {
     const mx = new Float64Array(items.length)
     const my = new Float64Array(items.length)
     const vx = new Float64Array(items.length)
     const vy = new Float64Array(items.length)
-    let previousLoss: number | null = null
-    let stableWindows = 0
     for (let step = 1; step <= steps; step++) {
       const gx = new Float64Array(items.length)
       const gy = new Float64Array(items.length)
@@ -94,42 +72,35 @@ export function optimizeItemPositions(registry: Registry, initial: Record<string
           gy[id] += centerGy * recipe.weights[offset]
         })
       }
-      if (collisions) {
-        const strength = Math.min(1, step / 250) * 50
-        for (let a = 0; a < items.length; a++) for (let b = a + 1; b < items.length; b++) {
-          let dx = x[a] - x[b]
-          let dy = y[a] - y[b]
-          let distance = Math.hypot(dx, dy)
-          if (distance >= ITEM_SPACING) continue
-          if (distance < 0.001) { dx = a % 2 ? 0.7 : -0.7; dy = 0.7; distance = Math.hypot(dx, dy) }
-          const factor = -2 * strength * (ITEM_SPACING - distance) / distance
-          const fx = factor * dx
-          const fy = factor * dy
-          gx[a] += fx
-          gy[a] += fy
-          gx[b] -= fx
-          gy[b] -= fy
-        }
+      const strength = Math.min(1, step / 250) * 50
+      for (let a = 0; a < items.length; a++) for (let b = a + 1; b < items.length; b++) {
+        if (!movable[a] && !movable[b]) continue
+        let dx = x[a] - x[b]
+        let dy = y[a] - y[b]
+        let distance = Math.hypot(dx, dy)
+        if (distance >= ITEM_SPACING) continue
+        if (distance < 0.001) { dx = a % 2 ? 0.7 : -0.7; dy = 0.7; distance = Math.hypot(dx, dy) }
+        const factor = -2 * strength * (ITEM_SPACING - distance) / distance
+        const fx = factor * dx
+        const fy = factor * dy
+        gx[a] += fx
+        gy[a] += fy
+        gx[b] -= fx
+        gy[b] -= fy
       }
       const beta1 = 0.9
       const beta2 = 0.999
       const correction1 = 1 - beta1 ** step
       const correction2 = 1 - beta2 ** step
       for (let id = 0; id < items.length; id++) {
+        if (!movable[id]) continue
         mx[id] = beta1 * mx[id] + (1 - beta1) * gx[id]
         my[id] = beta1 * my[id] + (1 - beta1) * gy[id]
         vx[id] = beta2 * vx[id] + (1 - beta2) * gx[id] ** 2
         vy[id] = beta2 * vy[id] + (1 - beta2) * gy[id] ** 2
-        if (items[id].type !== 'raw') x[id] = Math.max(PRODUCT_MIN_X + 27, x[id] - stepSize * mx[id] / correction1 / (Math.sqrt(vx[id] / correction2) + 1e-8))
+        if (!items[id].canExternalInput) x[id] = Math.max(PRODUCT_MIN_X + 27, x[id] - stepSize * mx[id] / correction1 / (Math.sqrt(vx[id] / correction2) + 1e-8))
         else x[id] = RAW_X + 27
         y[id] = Math.max(27, y[id] - stepSize * my[id] / correction1 / (Math.sqrt(vy[id] / correction2) + 1e-8))
-      }
-      if (!collisions && step % CONVERGENCE_INTERVAL === 0) {
-        const loss = lineLoss()
-        const relativeChange = previousLoss === null ? Infinity : Math.abs(previousLoss - loss) / Math.max(previousLoss, 1)
-        stableWindows = relativeChange < CONVERGENCE_TOLERANCE ? stableWindows + 1 : 0
-        if (step >= FIRST_STAGE_MIN_STEPS && stableWindows >= 2) break
-        previousLoss = loss
       }
     }
   }
@@ -160,7 +131,7 @@ export function optimizeItemPositions(registry: Registry, initial: Record<string
   }
 
   const placeLeaves = () => {
-    const leaves = recipes.flatMap((recipe) => recipe.edges.filter((id) => items[id].type !== 'raw' && edgeCounts[id] === 1).map((id) => ({ recipe, id })))
+    const leaves = recipes.flatMap((recipe) => recipe.edges.filter((id) => movable[id] && !items[id].canExternalInput && edgeCounts[id] === 1).map((id) => ({ recipe, id })))
     for (let pass = 0; pass < 4; pass++) for (const { recipe, id } of leaves) {
       const offset = recipe.indices.indexOf(id)
       const weight = recipe.weights[offset]
@@ -197,15 +168,14 @@ export function optimizeItemPositions(registry: Registry, initial: Record<string
       }
     }
     for (let id = 0; id < items.length; id++) {
-      if (items[id].type === 'raw' || !eligible[id] || neighbors[id].size !== 1) continue
+      if (!movable[id] || items[id].canExternalInput || !eligible[id] || neighbors[id].size !== 1) continue
       const anchor = [...neighbors[id]][0]
       if (eligible[anchor] && neighbors[anchor].size === 1 && id > anchor) continue
       placeOnRing(id, x[anchor], y[anchor], IDEAL_LENGTH * 2, () => 0)
     }
   }
 
-  optimize(FIRST_STAGE_MAX_STEPS, 2.5, false)
-  optimize(1000, 2, true)
+  optimize(1000, 2)
   placeLeaves()
   placeSatellites()
   return Object.fromEntries(items.map((item, id) => [itemNode(item.id), { x: x[id] - 27, y: y[id] - 27 }]))

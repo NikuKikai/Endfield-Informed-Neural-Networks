@@ -99,6 +99,7 @@ const recipes = flattenedRecipes.filter((recipe) => recipe.id && recipe.duration
   && [...recipe.inputs, ...recipe.outputs].every((entry) => entry.itemId && entry.amount !== null && allowedItems.has(entry.itemId)))
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true })
-fs.writeFileSync(outputPath, `${JSON.stringify({ source: 'hsyhhssyy/IndustrialPlanner', items: items.map(({ id, name }) => ({ id, name, type: rawItemIds.has(id) ? 'raw' : 'product' })), recipes }, null, 2)}\n`)
+const producedItemIds = new Set(recipes.flatMap((recipe) => recipe.outputs.map((entry) => entry.itemId)))
+fs.writeFileSync(outputPath, `${JSON.stringify({ source: 'hsyhhssyy/IndustrialPlanner', items: items.map(({ id, name }) => ({ id, name, canExternalInput: rawItemIds.has(id), canProduce: !rawItemIds.has(id) || producedItemIds.has(id) })), recipes }, null, 2)}\n`)
 const dynamic = candidateRecipes.filter((recipe) => !recipe.id || !recipe.duration || [...recipe.inputs, ...recipe.outputs].some((entry) => !entry.itemId || entry.amount === null)).length
 console.log(`Imported ${items.length} items and ${recipes.length} recipes; skipped ${dynamic} dynamic and ${sourceRecipes.length - recipes.length - dynamic} filtered recipes.`)
