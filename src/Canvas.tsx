@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { wulingVoucherPrices } from './data/wulingVouchers'
+import { useI18n } from './i18n'
 import { formatRate, ingredientRate, itemFlows, itemNode, recipeNode } from './model'
 import { recipePositions, routePositions } from './layout'
 import { usePlannerStore } from './store'
@@ -25,6 +26,7 @@ function formatEdgeRate(value: number) {
 }
 
 export default function Canvas({ registry, flowRecipes, focusNames, targetIds, solution, layoutView, savedView, onViewChange, fitOnLoad = false }: Props) {
+  const { t, itemName, machineName } = useI18n()
   const viewport = useRef<HTMLDivElement>(null)
   const drag = useRef<{ type: 'pan' | 'node'; id?: NodeId; x: number; y: number; position?: Point; travel?: number } | null>(null)
   const lastItemPress = useRef<{ id: string; time: number } | null>(null)
@@ -51,7 +53,7 @@ export default function Canvas({ registry, flowRecipes, focusNames, targetIds, s
     return [id, overrides[id] ?? savedPositions[id] ?? defaults[id]]
   })) as Record<string, Point>, [registry, defaults, savedPositions, overrides])
   const positions = useMemo(() => ({ ...itemPositions, ...recipePositions(registry, itemPositions) }), [registry, itemPositions])
-  const names = useMemo(() => new Map(registry.items.map((item) => [item.id, item.name])), [registry])
+  const names = new Map(registry.items.map((item) => [item.id, itemName(item)]))
 
   useEffect(() => { setOverrides({}); ensureLayout(layoutView, registry) }, [registry, layoutView, ensureLayout])
   useEffect(() => { onViewChange(layoutView, view) }, [layoutView, view, onViewChange])
@@ -193,7 +195,7 @@ export default function Canvas({ registry, flowRecipes, focusNames, targetIds, s
       {registry.items.map((item) => {
         const pos = positions[itemNode(item.id)]
         const flow = itemFlows(item, flowRecipes, solution)
-        return <div key={item.id} className={`graph-node item-node ${item.isEffect ? 'effect-node' : ''} ${item.canExternalInput ? 'external' : ''} ${item.id in wulingVoucherPrices ? 'voucher' : ''} ${targetIds.includes(item.id) ? 'goal' : ''} ${solution && lowFlowItems.has(item.id) ? 'low-flow' : ''} ${focusedItems.has(item.id) ? 'focused' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${item.name} · 输入 ${formatRate(flow.produced + flow.source)}（含外部输入 ${formatRate(flow.source)}）· 输出 ${formatRate(flow.consumed)} · 净 ${formatRate(flow.net)} / 分`}
+        return <div key={item.id} className={`graph-node item-node ${item.isEffect ? 'effect-node' : ''} ${item.canExternalInput ? 'external' : ''} ${item.id in wulingVoucherPrices ? 'voucher' : ''} ${targetIds.includes(item.id) ? 'goal' : ''} ${solution && lowFlowItems.has(item.id) ? 'low-flow' : ''} ${focusedItems.has(item.id) ? 'focused' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${itemName(item)} · ${t('input')} ${formatRate(flow.produced + flow.source)} (${t('sourceIncluded')} ${formatRate(flow.source)}) · ${t('output')} ${formatRate(flow.consumed)} · ${t('net')} ${formatRate(flow.net)} ${t('perMinute')}`}
           onPointerDown={(event) => {
             event.stopPropagation()
             const now = performance.now()
@@ -207,8 +209,8 @@ export default function Canvas({ registry, flowRecipes, focusNames, targetIds, s
             drag.current = { type: 'node', id: itemNode(item.id), x: event.clientX, y: event.clientY, position: pos, travel: 0 }
             viewport.current?.setPointerCapture(event.pointerId)
           }}>
-          <div className="item-title">{item.name}</div>
-          <div className="item-rates"><div className="item-in">入 {formatPortRate(flow.produced + flow.source)}</div><div className="item-out">出 {formatPortRate(flow.consumed)}</div><div className={`item-net ${flow.net < -0.01 ? 'negative' : ''}`}>净 {formatPortRate(flow.net)}</div></div>
+          <div className="item-title">{itemName(item)}</div>
+          <div className="item-rates"><div className="item-in">{t('input')} {formatPortRate(flow.produced + flow.source)}</div><div className="item-out">{t('output')} {formatPortRate(flow.consumed)}</div><div className={`item-net ${flow.net < -0.01 ? 'negative' : ''}`}>{t('net')} {formatPortRate(flow.net)}</div></div>
         </div>
       })}
       {registry.recipes.map((recipe) => {
@@ -217,12 +219,12 @@ export default function Canvas({ registry, flowRecipes, focusNames, targetIds, s
         const ingredients = (entries: Recipe['inputs']) => entries.map((entry) => `${names.get(entry.itemId) ?? entry.itemId}×${entry.amount}`).join(' + ')
         const conditions = recipe.inputs.filter((entry) => entry.condition)
         const recipeTooltip = [
-          `装置：${recipe.machineName}`,
+          `${t('machine')}: ${machineName(recipe)}`,
           `${ingredients(recipe.inputs.filter((entry) => !entry.condition))} → ${recipe.outputs.length ? ingredients(recipe.outputs) : '∅'}`,
-          ...(conditions.length ? [`条件：${ingredients(conditions)} / 分 / 台`] : []),
-          `倍率：${formatRate(rate)} 份配方效率`,
-          `耗电：${recipe.power}/份`,
-          `耗时：${recipe.duration} 秒/次`,
+          ...(conditions.length ? [`${t('condition')}: ${ingredients(conditions)} ${t('perMachine')}`] : []),
+          `${t('factor')}: ${formatRate(rate)} ${t('recipeUnit')}`,
+          `${t('power')}: ${recipe.power}${t('powerPerRecipe')}`,
+          `${t('duration')}: ${recipe.duration} ${t('secondsEach')}`,
         ].join('\n')
         return <div key={recipe.id} className={`graph-node recipe-node ${rate > 0.005 ? 'running' : ''} ${solution && lowFlowRecipes.has(recipe.id) ? 'low-flow' : ''} ${focusedRecipes.has(recipe.id) ? 'focused' : ''}`} style={{ left: pos.x, top: pos.y }} title={recipeTooltip}
           onPointerEnter={() => setHoveredRecipe(recipe.id)} onPointerLeave={() => setHoveredRecipe(null)}
@@ -231,13 +233,13 @@ export default function Canvas({ registry, flowRecipes, focusNames, targetIds, s
         </div>
       })}
     </div>
-    {focusIds.length > 0 && <div className="focus-list" onPointerDown={(event) => event.stopPropagation()}><div className="focus-heading">聚焦 <button onClick={clearFocus}>清空</button></div>{focusIds.map((id) => <button key={id} className="focus-entry" onClick={() => toggleFocus(id)}>{focusNames[id] ?? id}<span>×</span></button>)}</div>}
+    {focusIds.length > 0 && <div className="focus-list" onPointerDown={(event) => event.stopPropagation()}><div className="focus-heading">{t('focus')} <button onClick={clearFocus}>{t('clear')}</button></div>{focusIds.map((id) => <button key={id} className="focus-entry" onClick={() => toggleFocus(id)}>{focusNames[id] ?? id}<span>×</span></button>)}</div>}
     <div className="canvas-actions" onPointerDown={(event) => event.stopPropagation()} onWheel={(event) => event.stopPropagation()}>
-      <button className="layout-button" onClick={() => optimizeLayout(layoutView, registry)}>优化排布</button>
-      <button className="fit-button" onClick={fitAll}>适配全图</button>
+      <button className="layout-button" onClick={() => optimizeLayout(layoutView, registry)}>{t('optimizeLayout')}</button>
+      <button className="fit-button" onClick={fitAll}>{t('fitGraph')}</button>
       <div className="zoom-badge">
-        <label className="opacity-control"><span>透明度 {Math.round((1 - lowFlowOpacity) * 100)}%</span><input aria-label="低流量透明度" type="range" min="0" max="100" step="1" value={Math.round((1 - lowFlowOpacity) * 100)} onChange={(event) => setLowFlowOpacity(1 - Number(event.target.value) / 100)} /></label>
-        <label className="opacity-control"><span>阈值 {formatRate(lowFlowThreshold)}</span><input aria-label="低流量阈值" type="range" min="0" max="30" step="0.1" value={lowFlowThreshold} onChange={(event) => setLowFlowThreshold(Number(event.target.value))} /></label>
+        <label className="opacity-control"><span>{t('opacity')} {Math.round((1 - lowFlowOpacity) * 100)}%</span><input aria-label={t('lowFlowOpacity')} type="range" min="0" max="100" step="1" value={Math.round((1 - lowFlowOpacity) * 100)} onChange={(event) => setLowFlowOpacity(1 - Number(event.target.value) / 100)} /></label>
+        <label className="opacity-control"><span>{t('threshold')} {formatRate(lowFlowThreshold)}</span><input aria-label={t('lowFlowThreshold')} type="range" min="0" max="30" step="0.1" value={lowFlowThreshold} onChange={(event) => setLowFlowThreshold(Number(event.target.value))} /></label>
         <span>{Math.round(view.scale * 100)}%</span>
       </div>
     </div>

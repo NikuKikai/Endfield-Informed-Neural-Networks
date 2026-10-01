@@ -133,3 +133,5 @@
 .chart-grid{stroke:#2b3b44;stroke-width:1}
 .chart-axis{fill:#82949d;font-size:8px}
 .chart-empty{padding:22px 0;color:#7f919a;text-align:center;font-size:10px}
+.topbar-right{display:flex;align-items:center;gap:14px;min-width:0}
+.language-select{height:27px;flex:none;border:1px solid #34464e;border-radius:4px;background:#1c2a31;color:#dce4e8;padding:0 6px;font-size:11px}

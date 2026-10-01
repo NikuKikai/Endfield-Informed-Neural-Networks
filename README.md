@@ -1,4 +1,4 @@
-# 终末地工厂配平
+# Endfield-Informed Neural Networks
 
 Vite + React + TypeScript 静态前端。TensorFlow.js 在 Web Worker 中优化稳态配方速率；画布用于查看、聚焦和调整产线图。
 
@@ -25,4 +25,6 @@ npm run build
 - 实际设备数的取整只用于耗电展示，不进入可微目标。天有烘炉数量上限也用软约束，因此结果仍需检查约束残差。
 
 配方快照来自 [IndustrialPlanner](https://github.com/hsyhhssyy/IndustrialPlanner) 提交 `0dc1269fd7188d1236ece61a46afdd064b7440be` 的注册表。当前 `src/data/registry.json` 有 139 个物品、177 条配方；导入时排除装液体或气体的瓶/罐、净变化为零的搬运配方，以及 `WATER_PURIFIER_NODE_ENTITY_ID` 和扩容反应池的特殊配方。重导入时将上游仓库放在项目根目录的 `.source-IndustrialPlanner`，运行 `node scripts/import-registry.mjs`。最终物流节拍与空间覆盖仍需在游戏或仿真器中核验。
+
+界面支持中文、English、日本語，默认按浏览器语言选择，也可在页眉切换。`src/data/localizedNames.json` 的 135 个英日物品名和 27 个装置名按 ID 核对自游戏提取的 [ItemTable](https://endfield-assets.fffdan.com/table/ItemTable/all)、[FactoryBuildingTable](https://endfield-assets.fffdan.com/table/FactoryBuildingTable/all) 与[日文文本表](https://endfield-assets.fffdan.com/i18n/dict/JP/table/ItemTable/all)；缺少专用 ID 的装置变体按基础装置或相同中文名称匹配。参考项目本身提供[中英文注册表译名](https://github.com/hsyhhssyy/IndustrialPlanner/tree/v3/src/shared/i18n)。
 

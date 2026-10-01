@@ -1,0 +1,654 @@
+{
+  "items": {
+    "item_bottled_food_1": {
+      "en": "Canned Citrome [C]",
+      "ja": "シトロームの缶詰Ⅰ"
+    },
+    "item_bottled_food_2": {
+      "en": "Canned Citrome [B]",
+      "ja": "シトロームの缶詰Ⅱ"
+    },
+    "item_bottled_food_3": {
+      "en": "Canned Citrome [A]",
+      "ja": "シトロームの缶詰Ⅲ"
+    },
+    "item_bottled_food_4": {
+      "en": "Jincao Drink",
+      "ja": "錦草ソーダⅠ"
+    },
+    "item_bottled_food_5": {
+      "en": "Jincao Tea",
+      "ja": "錦草ソーダⅡ"
+    },
+    "item_bottled_rec_hp_1": {
+      "en": "Buck Capsule [C]",
+      "ja": "蕎花カプセルⅠ"
+    },
+    "item_bottled_rec_hp_2": {
+      "en": "Buck Capsule [B]",
+      "ja": "蕎花カプセルⅡ"
+    },
+    "item_bottled_rec_hp_3": {
+      "en": "Buck Capsule [A]",
+      "ja": "蕎花カプセルⅢ"
+    },
+    "item_bottled_rec_hp_4": {
+      "en": "Yazhen Syringe [C]",
+      "ja": "芽針注射剤Ⅰ"
+    },
+    "item_bottled_rec_hp_5": {
+      "en": "Yazhen Syringe [A]",
+      "ja": "芽針注射剤Ⅱ"
+    },
+    "item_carbon_enr": {
+      "en": "Stabilized Carbon",
+      "ja": "安定炭塊"
+    },
+    "item_carbon_enr_powder": {
+      "en": "Dense Carbon Powder",
+      "ja": "高密度炭塊粉末"
+    },
+    "item_carbon_mtl": {
+      "en": "Carbon",
+      "ja": "炭塊"
+    },
+    "item_carbon_powder": {
+      "en": "Carbon Powder",
+      "ja": "炭塊粉末"
+    },
+    "item_crystal_enr": {
+      "en": "Packed Origocrust",
+      "ja": "特製結晶"
+    },
+    "item_crystal_enr_powder": {
+      "en": "Dense Origocrust Powder",
+      "ja": "高密度結晶粉末"
+    },
+    "item_crystal_powder": {
+      "en": "Origocrust Powder",
+      "ja": "結晶外殻粉末"
+    },
+    "item_crystal_shell": {
+      "en": "Origocrust",
+      "ja": "結晶外殻"
+    },
+    "item_copper_ore": {
+      "en": "Cuprium Ore",
+      "ja": "赤銅鉱物"
+    },
+    "item_copper_bottle": {
+      "en": "Cuprium Bottle",
+      "ja": "赤銅ボトル"
+    },
+    "item_copper_enr_bottle": {
+      "en": "Hetonite Bottle",
+      "ja": "緋銅ボトル"
+    },
+    "item_copper_enr": {
+      "en": "Hetonite",
+      "ja": "緋銅塊"
+    },
+    "item_copper_powder": {
+      "en": "Cuprium Powder",
+      "ja": "赤銅粉末"
+    },
+    "item_copper_nugget": {
+      "en": "Cuprium",
+      "ja": "赤銅塊"
+    },
+    "item_copper_enr2": {
+      "en": "Pyrrolite",
+      "ja": "焔銅塊"
+    },
+    "item_copper_enr2_cmpt": {
+      "en": "Pyrrolite Part",
+      "ja": "焔銅部品"
+    },
+    "item_copper_jar": {
+      "en": "Cuprium Canister",
+      "ja": "赤銅圧力タンク"
+    },
+    "item_liquid_acid": {
+      "en": "Precipitation Acid",
+      "ja": "沈殿酸"
+    },
+    "item_liquid_copper": {
+      "en": "Cuprium Solution",
+      "ja": "赤銅溶液"
+    },
+    "item_liquid_copper_enr": {
+      "en": "Hetonite Solution",
+      "ja": "緋銅溶液"
+    },
+    "item_liquid_sewage": {
+      "en": "Sewage",
+      "ja": "汚水"
+    },
+    "item_liquid_xiranite_poly": {
+      "en": "Xircon Effluent",
+      "ja": "壌晶廃液"
+    },
+    "item_liquid_xiranite_lowpoly": {
+      "en": "Inert Xircon Effluent",
+      "ja": "不活性壌晶廃液"
+    },
+    "item_liquid_xiranite_enr": {
+      "en": "Liquid Heavy Xiranite",
+      "ja": "液化重息壌"
+    },
+    "item_xiranite_poly": {
+      "en": "Xircon",
+      "ja": "壌晶"
+    },
+    "item_activity_xiranite_cmpt": {
+      "en": "Experimental Xiranite Part",
+      "ja": "実験用息壌部品"
+    },
+    "item_activity_xiranite_enr_cmpt": {
+      "en": "Experimental Heavy Xiranite Part",
+      "ja": "実験用重息壌部品"
+    },
+    "item_activity_xiranite_bottle": {
+      "en": "Experimental Xiranite Bottle",
+      "ja": "実験用息壌ボトル"
+    },
+    "item_activity_xiranite_enr_bottle": {
+      "en": "Experimental Heavy Xiranite Bottle",
+      "ja": "実験用重息壌ボトル"
+    },
+    "item_activity_xiranite_nugget": {
+      "en": "Proto Xiranite",
+      "ja": "実験用息壌ブロック"
+    },
+    "item_activity_xiranite_box": {
+      "en": "Proto Chubby Lung Shell",
+      "ja": "実験用龍泡泡シェル"
+    },
+    "item_activity_copper_xiranite_tool": {
+      "en": "Proto Cuprium Frame",
+      "ja": "実験用銅フレーム"
+    },
+    "item_activity_xiranite_lung": {
+      "en": "Xiranite Chubby Lung",
+      "ja": "息壌龍泡泡"
+    },
+    "item_activity_xiranite_enr_nugget": {
+      "en": "Proto Heavy Xiranite",
+      "ja": "実験用重息壌ブロック"
+    },
+    "item_activity_xiranite_enr_box": {
+      "en": "Proto Chubby Lung Heavy Shell",
+      "ja": "実験用龍泡泡ヘビーシェル"
+    },
+    "item_activity_copper_poly_gas": {
+      "en": "Proto Xiran-Cuprium Gas",
+      "ja": "実験用息壌銅ガス"
+    },
+    "item_activity_copper_poly": {
+      "en": "Proto Xiran-Cuprium",
+      "ja": "実験用息壌銅塊"
+    },
+    "item_activity_copper_poly_cmpt": {
+      "en": "Proto Xiran-Cuprium Part",
+      "ja": "実験用息壌銅部品"
+    },
+    "item_activity_copper_poly_tool": {
+      "en": "Proto Xiran-Cuprium Frame",
+      "ja": "実験用息壌銅フレーム"
+    },
+    "item_activity_xiranite_enr_lung": {
+      "en": "Heavy Xiranite Chubby Lung",
+      "ja": "重息壌龍泡泡"
+    },
+    "item_activity_xiranite_enr_tool": {
+      "en": "Experimental Xiran-Hue Atomizer",
+      "ja": "実験用玉銅拡散装置"
+    },
+    "item_activity_xiranite_hulu": {
+      "en": "Xiranite Gourd",
+      "ja": "息壌ひょうたん"
+    },
+    "item_activity_xiranite_enr_hulu": {
+      "en": "Xiranite Jade Gourd",
+      "ja": "息壌玉ひょうたん"
+    },
+    "item_copper_cmpt": {
+      "en": "Cuprium Part",
+      "ja": "赤銅部品"
+    },
+    "item_copper_enr_cmpt": {
+      "en": "Hetonite Part",
+      "ja": "緋銅部品"
+    },
+    "item_equip_script_1": {
+      "en": "Amethyst Component",
+      "ja": "紫晶装備部品"
+    },
+    "item_equip_script_2": {
+      "en": "Ferrium Component",
+      "ja": "青鉄装備部品"
+    },
+    "item_equip_script_3": {
+      "en": "Cryston Component",
+      "ja": "高晶装備部品"
+    },
+    "item_equip_script_4": {
+      "en": "Xiranite Component",
+      "ja": "息壌装備部品"
+    },
+    "item_equip_script_4_1": {
+      "en": "Cuprium Component",
+      "ja": "赤銅装備部品"
+    },
+    "item_equip_script_4_2": {
+      "en": "Hetonite Component",
+      "ja": "緋銅装備部品"
+    },
+    "item_equip_script_4_3": {
+      "en": "Pyrrolite Component",
+      "ja": "焔銅装備部品"
+    },
+    "item_filter_core": {
+      "en": "Separator Core",
+      "ja": "分離コア"
+    },
+    "item_glass_bottle": {
+      "en": "Amethyst Bottle",
+      "ja": "紫晶製ボトル"
+    },
+    "item_glass_cmpt": {
+      "en": "Amethyst Part",
+      "ja": "紫晶部品"
+    },
+    "item_glass_enr_bottle": {
+      "en": "Cryston Bottle",
+      "ja": "高晶製ボトル"
+    },
+    "item_glass_enr_cmpt": {
+      "en": "Cryston Part",
+      "ja": "高晶部品"
+    },
+    "item_iron_bottle": {
+      "en": "Ferrium Bottle",
+      "ja": "青鉄製ボトル"
+    },
+    "item_iron_cmpt": {
+      "en": "Ferrium Part",
+      "ja": "鉄製部品"
+    },
+    "item_iron_enr": {
+      "en": "Steel",
+      "ja": "鋼"
+    },
+    "item_iron_enr_bottle": {
+      "en": "Steel Bottle",
+      "ja": "鋼製ボトル"
+    },
+    "item_iron_enr_cmpt": {
+      "en": "Steel Part",
+      "ja": "鋼製部品"
+    },
+    "item_iron_enr_powder": {
+      "en": "Dense Ferrium Powder",
+      "ja": "高密度青鉄粉末"
+    },
+    "item_iron_nugget": {
+      "en": "Ferrium",
+      "ja": "青鉄塊"
+    },
+    "item_iron_ore": {
+      "en": "Ferrium Ore",
+      "ja": "青鉄鉱物"
+    },
+    "item_iron_powder": {
+      "en": "Ferrium Powder",
+      "ja": "青鉄粉末"
+    },
+    "item_liquid_plant_grass_1": {
+      "en": "Jincao Solution",
+      "ja": "錦草エキス"
+    },
+    "item_liquid_plant_grass_2": {
+      "en": "Yazhen Solution",
+      "ja": "芽針エキス"
+    },
+    "item_liquid_water": {
+      "en": "Clean Water",
+      "ja": "水"
+    },
+    "item_liquid_xiranite": {
+      "en": "Liquid Xiranite",
+      "ja": "液化息壌"
+    },
+    "item_gas_inert": {
+      "en": "Inergen",
+      "ja": "不活性ガス"
+    },
+    "item_gas_xiranite": {
+      "en": "Xiragen",
+      "ja": "息壌ガス"
+    },
+    "item_gas_xiranite_enr": {
+      "en": "Heavy Xiragen",
+      "ja": "重息壌ガス"
+    },
+    "item_gas_copper": {
+      "en": "Cuprium Gas",
+      "ja": "赤銅ガス"
+    },
+    "item_gas_copper_enr": {
+      "en": "Hetonite Gas",
+      "ja": "緋銅ガス"
+    },
+    "item_gas_water": {
+      "en": "Aquagen",
+      "ja": "水蒸気"
+    },
+    "item_gas_copper_enr2": {
+      "en": "Pyrrolite Gas",
+      "ja": "焔銅ガス"
+    },
+    "item_muck_feces_1": {
+      "en": "Burdo-Muck",
+      "ja": "駄獣のフン"
+    },
+    "item_muck_xiranite_1": {
+      "en": "Bumper-Rich",
+      "ja": "ポンポン肥料"
+    },
+    "item_originium_enr_powder": {
+      "en": "Dense Originium Powder",
+      "ja": "高密度源石粉末"
+    },
+    "item_originium_ore": {
+      "en": "Originium Ore",
+      "ja": "源石鉱物"
+    },
+    "item_originium_powder": {
+      "en": "Originium Powder",
+      "ja": "源石粉末"
+    },
+    "item_plant_bbflower_1": {
+      "en": "Aketine",
+      "ja": "アケトン樹木"
+    },
+    "item_plant_bbflower_powder_1": {
+      "en": "Aketine Powder",
+      "ja": "アケトン粉末"
+    },
+    "item_plant_bbflower_seed_1": {
+      "en": "Aketine Seed",
+      "ja": "アケトンの種"
+    },
+    "item_plant_grass_1": {
+      "en": "Jincao",
+      "ja": "錦草"
+    },
+    "item_plant_grass_2": {
+      "en": "Yazhen",
+      "ja": "芽針"
+    },
+    "item_plant_grass_powder_1": {
+      "en": "Jincao Powder",
+      "ja": "錦草粉末"
+    },
+    "item_plant_grass_powder_2": {
+      "en": "Yazhen Powder",
+      "ja": "芽針粉末"
+    },
+    "item_plant_grass_seed_1": {
+      "en": "Jincao Seed",
+      "ja": "錦草の種"
+    },
+    "item_plant_grass_seed_2": {
+      "en": "Yazhen Seeds",
+      "ja": "芽針の種"
+    },
+    "item_plant_moss_1": {
+      "en": "Buckflower",
+      "ja": "蕎花"
+    },
+    "item_plant_moss_2": {
+      "en": "Citrome",
+      "ja": "シトローム"
+    },
+    "item_plant_moss_3": {
+      "en": "Sandleaf",
+      "ja": "サンドリーフ"
+    },
+    "item_plant_moss_enr_powder_1": {
+      "en": "Ground Buckflower Powder",
+      "ja": "蕎花細粉"
+    },
+    "item_plant_moss_enr_powder_2": {
+      "en": "Ground Citrome Powder",
+      "ja": "シトローム細粉"
+    },
+    "item_plant_moss_powder_1": {
+      "en": "Buckflower Powder",
+      "ja": "蕎花粉末"
+    },
+    "item_plant_moss_powder_2": {
+      "en": "Citrome Powder",
+      "ja": "シトローム粉末"
+    },
+    "item_plant_moss_powder_3": {
+      "en": "Sandleaf Powder",
+      "ja": "サンドリーフ粉末"
+    },
+    "item_plant_moss_seed_1": {
+      "en": "Buckflower Seed",
+      "ja": "蕎花の種"
+    },
+    "item_plant_moss_seed_2": {
+      "en": "Citrome Seed",
+      "ja": "シトロームの種"
+    },
+    "item_plant_moss_seed_3": {
+      "en": "Sandleaf Seed",
+      "ja": "サンドリーフの種"
+    },
+    "item_plant_sp_1": {
+      "en": "Reed Rye",
+      "ja": "灰麦"
+    },
+    "item_plant_sp_2": {
+      "en": "Tartpepper",
+      "ja": "苦葉椒"
+    },
+    "item_plant_sp_3": {
+      "en": "Redjade Ginseng",
+      "ja": "玉葉人参"
+    },
+    "item_plant_sp_4": {
+      "en": "Amber Rice",
+      "ja": "金石稲"
+    },
+    "item_plant_sp_seed_1": {
+      "en": "Reed Rye Seeds",
+      "ja": "灰麦の種"
+    },
+    "item_plant_sp_seed_2": {
+      "en": "Tartpepper Seeds",
+      "ja": "苦葉椒の種"
+    },
+    "item_plant_sp_seed_3": {
+      "en": "Redjade Ginseng Seeds",
+      "ja": "玉葉人参の種"
+    },
+    "item_plant_sp_seed_4": {
+      "en": "Amber Rice Seeds",
+      "ja": "金石稲の種"
+    },
+    "item_plant_tundra_wood": {
+      "en": "Wood",
+      "ja": "木材"
+    },
+    "item_proc_battery_1": {
+      "en": "LC Valley Battery",
+      "ja": "小容量谷地バッテリー"
+    },
+    "item_proc_battery_2": {
+      "en": "SC Valley Battery",
+      "ja": "中容量谷地バッテリー"
+    },
+    "item_proc_battery_3": {
+      "en": "HC Valley Battery",
+      "ja": "大容量谷地バッテリー"
+    },
+    "item_proc_battery_4": {
+      "en": "LC Wuling Battery",
+      "ja": "小容量武陵バッテリー"
+    },
+    "item_proc_battery_5": {
+      "en": "SC Wuling Battery",
+      "ja": "中容量武陵バッテリー"
+    },
+    "item_proc_bomb_1": {
+      "en": "Industrial Explosive",
+      "ja": "工業爆弾"
+    },
+    "item_quartz_enr": {
+      "en": "Cryston Fiber",
+      "ja": "高晶繊維"
+    },
+    "item_quartz_enr_powder": {
+      "en": "Cryston Powder",
+      "ja": "高晶粉末"
+    },
+    "item_quartz_glass": {
+      "en": "Amethyst Fiber",
+      "ja": "紫晶繊維"
+    },
+    "item_quartz_powder": {
+      "en": "Amethyst Powder",
+      "ja": "紫晶粉末"
+    },
+    "item_quartz_sand": {
+      "en": "Amethyst Ore",
+      "ja": "紫晶鉱物"
+    },
+    "item_xiranite_enr_powder": {
+      "en": "Heavy Xiranite",
+      "ja": "重息壌"
+    },
+    "item_xiranite_powder": {
+      "en": "Xiranite",
+      "ja": "息壌"
+    },
+    "item_gas_acid": {
+      "en": "Acridgen",
+      "ja": "酸性ガス"
+    }
+  },
+  "machines": {
+    "grinder_1": {
+      "en": "Shredding Unit",
+      "ja": "粉砕機"
+    },
+    "furnance_1": {
+      "en": "Refining Unit",
+      "ja": "精錬炉"
+    },
+    "furnance_1_liquid": {
+      "en": "Refining Unit",
+      "ja": "精錬炉"
+    },
+    "liquid_cleaner_1": {
+      "en": "Water Treatment Unit",
+      "ja": "廃水処理機"
+    },
+    "winder_1": {
+      "en": "Gearing Unit",
+      "ja": "装備部品加工機"
+    },
+    "mix_pool_1": {
+      "en": "Reactor Crucible",
+      "ja": "化学反応炉"
+    },
+    "tools_asm_mc_1": {
+      "en": "Packaging Unit",
+      "ja": "包装機"
+    },
+    "seedcol_1": {
+      "en": "Seed-Picking Unit",
+      "ja": "採種機"
+    },
+    "planter_1": {
+      "en": "Planting Unit",
+      "ja": "栽培機"
+    },
+    "thickener_1": {
+      "en": "Grinding Unit",
+      "ja": "研磨機"
+    },
+    "cmpt_mc_1": {
+      "en": "Fitting Unit",
+      "ja": "組立機"
+    },
+    "shaper_1": {
+      "en": "Moulding Unit",
+      "ja": "成形機"
+    },
+    "shaper_1_gas": {
+      "en": "Moulding Unit",
+      "ja": "成形機"
+    },
+    "filling_pd_mc_1": {
+      "en": "Filling Unit",
+      "ja": "充填機"
+    },
+    "dismantler_1": {
+      "en": "Separating Unit",
+      "ja": "解体機"
+    },
+    "xiranite_oven_1": {
+      "en": "Forge of the Sky",
+      "ja": "天有洪炉"
+    },
+    "planter_1_liquid": {
+      "en": "Planting Unit",
+      "ja": "栽培機"
+    },
+    "liquid_purifier_1": {
+      "en": "Purification Unit",
+      "ja": "精製機"
+    },
+    "dumper_1": {
+      "en": "Fluid Supply Unit",
+      "ja": "排水機"
+    },
+    "transmuter_1_gastrans": {
+      "en": "Fluid-Gas Transmuting Unit",
+      "ja": "ガス液体転換機"
+    },
+    "transmuter_1_liquidtrans": {
+      "en": "Fluid-Gas Transmuting Unit",
+      "ja": "ガス液体転換機"
+    },
+    "vaporizer_1": {
+      "en": "Gas Dispersing Unit",
+      "ja": "ガス散布機"
+    },
+    "power_sta_1": {
+      "en": "Thermal Bank",
+      "ja": "発電機"
+    },
+    "gas_reactor_1": {
+      "en": "Gas Reactor Globe",
+      "ja": "ガス反応装置"
+    },
+    "liquid_purifier_1_gas": {
+      "en": "Purification Unit",
+      "ja": "精製機"
+    },
+    "transmuter_2_gastrans": {
+      "en": "Solid-Gas Transmuting Unit",
+      "ja": "ガス固体転換機"
+    },
+    "transmuter_2_solidtrans": {
+      "en": "Solid-Gas Transmuting Unit",
+      "ja": "ガス固体転換機"
+    }
+  }
+}

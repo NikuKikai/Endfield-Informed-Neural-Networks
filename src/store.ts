@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { defaultSupplies } from './defaultSupplies'
 import { routePositions } from './layout'
+import { detectLanguage, type Language } from './language'
 import { itemNode } from './model'
 import { optimizeItemPositions } from './optimizeLayout'
 import type { HistoryPoint, Point, Registry, Solution, Supply, Target } from './types'
@@ -11,6 +12,7 @@ type Layouts = Record<LayoutView, Record<string, Point>>
 type VisibleItems = Record<LayoutView, string[]>
 
 type PlannerState = {
+  language: Language
   selectedId: string | null
   viewMode: LayoutView
   targets: Target[]
@@ -32,6 +34,7 @@ type PlannerState = {
   status: string
   running: boolean
   setSelectedId: (id: string | null) => void
+  setLanguage: (language: Language) => void
   setViewMode: (view: LayoutView) => void
   addTarget: (id: string) => void
   setTargetValue: (id: string, value: number) => void
@@ -87,6 +90,7 @@ function seedNewItems(registry: Registry, positions: Record<string, Point>, prev
 }
 
 export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
+  language: detectLanguage(),
   selectedId: null,
   viewMode: 'all',
   targets: [],
@@ -108,6 +112,7 @@ export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
   status: '设置目标后开始求解',
   running: false,
   setSelectedId: (selectedId) => set({ selectedId }),
+  setLanguage: (language) => set({ language }),
   setViewMode: (viewMode) => set({ viewMode }),
   addTarget: (id) => set((state) => {
     if (state.targets.some((target) => target.itemId === id)) return { selectedId: id }
@@ -162,6 +167,7 @@ export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
   name: 'zmdbalance-planner-v1',
   storage: createJSONStorage(() => localStorage),
   partialize: (state) => ({
+    language: state.language,
     targets: state.targets,
     supplies: state.supplies,
     powerWeight: state.powerWeight,
