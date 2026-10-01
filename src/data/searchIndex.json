@@ -71,10 +71,6 @@
     "initials": "jtwk",
     "fullPinyin": "jingtiwaike"
   },
-  "item_copper_ore": {
-    "initials": "ctk",
-    "fullPinyin": "chitongkuang"
-  },
   "item_copper_bottle": {
     "initials": "ctp",
     "fullPinyin": "chitongping"
@@ -514,5 +510,21 @@
   "item_gas_acid": {
     "initials": "sq",
     "fullPinyin": "suanqi"
+  },
+  "effect:item_gas_inert": {
+    "initials": "dqxg",
+    "fullPinyin": "duoqixiaoguo"
+  },
+  "effect:item_gas_water": {
+    "initials": "szqxg",
+    "fullPinyin": "shuizhengqixiaoguo"
+  },
+  "effect:item_gas_acid": {
+    "initials": "sqxg",
+    "fullPinyin": "suanqixiaoguo"
+  },
+  "effect:item_gas_xiranite": {
+    "initials": "xrqxg",
+    "fullPinyin": "xirangqixiaoguo"
   }
 }

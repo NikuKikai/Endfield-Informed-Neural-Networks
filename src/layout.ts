@@ -1,75 +1,88 @@
-import type { Point, Recipe, Registry } from './types'
+import type { Point, Registry } from './types'
 import { itemNode, recipeNode } from './model'
 
 const LEFT = 80
 const TOP = 100
 const COLUMN = 150
-const LANE = 108
+const LANE = 100
 const RECIPE_SIZE = 18
 
-type Route = { items: string[]; terminal: boolean }
-
 export function routePositions(registry: Registry): Record<string, Point> {
-  const producers = new Map<string, Recipe[]>()
-  const consumers = new Map<string, string[]>()
-  const raw = new Set(registry.items.filter((item) => item.canExternalInput).map((item) => item.id))
+  const next = new Map<string, string[]>()
+  const produced = new Set<string>()
   for (const recipe of registry.recipes) {
-    for (const output of recipe.outputs) producers.set(output.itemId, [...(producers.get(output.itemId) ?? []), recipe])
-    for (const input of recipe.inputs) consumers.set(input.itemId, [...(consumers.get(input.itemId) ?? []), ...recipe.outputs.map((output) => output.itemId)])
-  }
-
-  const cache = new Map<string, string[]>()
-  const longestRoute = (id: string, visiting: Set<string>): string[] => {
-    if (raw.has(id)) return [id]
-    if (visiting.has(id)) return []
-    const cached = cache.get(id)
-    if (cached) return cached
-    visiting.add(id)
-    let best: string[] = []
-    for (const recipe of producers.get(id) ?? []) for (const input of recipe.inputs) {
-      const prefix = longestRoute(input.itemId, visiting)
-      if (prefix.length > best.length) best = prefix
+    for (const output of recipe.outputs) produced.add(output.itemId)
+    for (const input of recipe.inputs) {
+      const outputs = next.get(input.itemId) ?? []
+      for (const output of recipe.outputs) if (!outputs.includes(output.itemId)) outputs.push(output.itemId)
+      next.set(input.itemId, outputs)
     }
-    visiting.delete(id)
-    const path = [...best, id]
-    cache.set(id, path)
-    return path
   }
 
-  const routes: Route[] = registry.items.filter((item) => !raw.has(item.id)).map((item) => ({
-    items: longestRoute(item.id, new Set()),
-    terminal: !(consumers.get(item.id)?.length),
-  })).sort((a, b) => Number(b.terminal) - Number(a.terminal) || b.items.length - a.items.length)
-
-  const positions: Record<string, Point> = {}
-  const occupied = new Set<string>()
-  let nextTerminalLane = 0
-  const slot = (column: number, lane: number) => `${column}:${lane}`
-  const place = (id: string, column: number, desiredLane: number) => {
-    if (positions[itemNode(id)]) return
-    const col = raw.has(id) ? 0 : Math.max(1, column)
-    let lane = Math.max(0, desiredLane)
-    for (let distance = 0; occupied.has(slot(col, lane)); distance++) {
-      const below = Math.max(0, desiredLane + distance + 1)
-      const above = desiredLane - distance - 1
-      lane = above >= 0 && !occupied.has(slot(col, above)) ? above : below
+  const depth = new Map<string, number>()
+  const children = new Map<string, string[]>()
+  const roots: string[] = []
+  const queue: string[] = []
+  const addRoot = (id: string, level: number) => {
+    if (depth.has(id)) return
+    depth.set(id, level)
+    roots.push(id)
+    queue.push(id)
+  }
+  const visitQueue = () => {
+    for (let head = 0; head < queue.length; head++) {
+      const id = queue[head]
+      for (const output of next.get(id) ?? []) {
+        if (depth.has(output)) continue
+        depth.set(output, depth.get(id)! + 1)
+        children.set(id, [...(children.get(id) ?? []), output])
+        queue.push(output)
+      }
     }
-    occupied.add(slot(col, lane))
-    positions[itemNode(id)] = { x: LEFT + col * COLUMN, y: TOP + lane * LANE }
+    queue.length = 0
   }
 
-  for (const route of routes) {
-    const unplaced = route.items.filter((id) => !positions[itemNode(id)])
-    if (!unplaced.length) continue
-    const anchorIndex = route.items.findIndex((id) => positions[itemNode(id)] && !raw.has(id))
-    const anchor = anchorIndex >= 0 ? positions[itemNode(route.items[anchorIndex])] : null
-    const columnOffset = anchor ? Math.round((anchor.x - LEFT) / COLUMN) - anchorIndex : 0
-    let baseLane = route.terminal ? nextTerminalLane++ : anchor ? Math.round((anchor.y - TOP) / LANE) : 0
-    if (!route.terminal && !anchor) while (route.items.some((id, index) => !positions[itemNode(id)] && occupied.has(slot(raw.has(id) ? 0 : Math.max(1, index), baseLane)))) baseLane++
-    route.items.forEach((id, index) => place(id, index + columnOffset, baseLane))
+  for (const item of registry.items) if (item.canExternalInput) addRoot(item.id, 0)
+  visitQueue()
+  for (const item of registry.items) {
+    if (depth.has(item.id) || produced.has(item.id)) continue
+    addRoot(item.id, 1)
   }
-  for (const item of registry.items) place(item.id, raw.has(item.id) ? 0 : 1, 0)
-  return positions
+  visitQueue()
+  for (const item of registry.items) {
+    if (depth.has(item.id)) continue
+    addRoot(item.id, 1)
+    visitQueue()
+  }
+
+  const row = new Map<string, number>()
+  let nextRow = 0
+  const placeTree = (id: string): number => {
+    const descendants = children.get(id) ?? []
+    const y = descendants.length
+      ? descendants.reduce((sum, child) => sum + placeTree(child), 0) / descendants.length
+      : nextRow++ * LANE
+    row.set(id, y)
+    return y
+  }
+  for (const root of roots) placeTree(root)
+
+  const columns = new Map<number, string[]>()
+  for (const item of registry.items) {
+    const level = depth.get(item.id)!
+    columns.set(level, [...(columns.get(level) ?? []), item.id])
+  }
+  const largestColumn = Math.max(0, ...[...columns.values()].map((ids) => ids.length))
+  const positionY = new Map<string, number>()
+  for (const ids of columns.values()) {
+    ids.sort((a, b) => row.get(a)! - row.get(b)!)
+    ids.forEach((id, index) => positionY.set(id, TOP + (index + (largestColumn - ids.length) / 2) * LANE))
+  }
+
+  return Object.fromEntries(registry.items.map((item) => [itemNode(item.id), {
+    x: LEFT + depth.get(item.id)! * COLUMN,
+    y: positionY.get(item.id)!,
+  }]))
 }
 
 function average(points: Point[]): Point | null {

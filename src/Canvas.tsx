@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { formatRate, itemFlows, itemNode, recipeNode, visibleNodes } from './model'
+import { wulingVoucherPrices } from './data/wulingVouchers'
+import { formatRate, ingredientRate, itemFlows, itemNode, recipeNode } from './model'
 import { recipePositions, routePositions } from './layout'
 import { usePlannerStore } from './store'
 import type { LayoutView } from './store'
 import type { CSSProperties } from 'react'
 import type { NodeId, Point, Recipe, Registry, Solution } from './types'
 
-type Props = { registry: Registry; flowRecipes: Recipe[]; targetId: string | null; targetIds: string[]; solution: Solution | null; layoutView: LayoutView; savedView?: View; onViewChange: (view: LayoutView, camera: View) => void; fitOnLoad?: boolean; onSelectItem: (id: string) => void }
+type Props = { registry: Registry; flowRecipes: Recipe[]; focusNames: Record<string, string>; targetIds: string[]; solution: Solution | null; layoutView: LayoutView; savedView?: View; onViewChange: (view: LayoutView, camera: View) => void; fitOnLoad?: boolean }
 export type View = { x: number; y: number; scale: number }
-type Edge = { key: string; from: NodeId; to: NodeId; x1: number; y1: number; x2: number; y2: number; recipeId: string; kind: 'input' | 'output'; unitRate: number; actualRate: number; labelX: number; labelY: number; unitX: number; unitY: number; unitAnchor: 'start' | 'end' }
+type Edge = { key: string; from: NodeId; to: NodeId; x1: number; y1: number; x2: number; y2: number; recipeId: string; kind: 'input' | 'output'; condition: boolean; unitRate: number; actualRate: number; labelX: number; labelY: number; unitX: number; unitY: number; unitAnchor: 'start' | 'end' }
 
 const ITEM_WIDTH = 54
 const RECIPE_SIZE = 18
@@ -23,11 +24,11 @@ function formatEdgeRate(value: number) {
   return value >= 1000 ? `${fixed(value / 1000)}k` : fixed(value)
 }
 
-export default function Canvas({ registry, flowRecipes, targetId, targetIds, solution, layoutView, savedView, onViewChange, fitOnLoad = false, onSelectItem }: Props) {
+export default function Canvas({ registry, flowRecipes, focusNames, targetIds, solution, layoutView, savedView, onViewChange, fitOnLoad = false }: Props) {
   const viewport = useRef<HTMLDivElement>(null)
-  const drag = useRef<{ type: 'pan' | 'node'; id?: NodeId; x: number; y: number; position?: Point } | null>(null)
+  const drag = useRef<{ type: 'pan' | 'node'; id?: NodeId; x: number; y: number; position?: Point; travel?: number } | null>(null)
+  const lastItemPress = useRef<{ id: string; time: number } | null>(null)
   const initialCentered = useRef(Boolean(savedView))
-  const lastTarget = useRef(targetId)
   const [view, setView] = useState<View>(() => savedView ?? { x: 60, y: 60, scale: 0.7 })
   const [overrides, setOverrides] = useState<Record<string, Point>>({})
   const [hoveredRecipe, setHoveredRecipe] = useState<string | null>(null)
@@ -36,8 +37,14 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
   const optimizeLayout = usePlannerStore((state) => state.optimizeLayout)
   const setNodePosition = usePlannerStore((state) => state.setNodePosition)
   const lowFlowOpacity = usePlannerStore((state) => state.lowFlowOpacity)
+  const lowFlowThreshold = usePlannerStore((state) => state.lowFlowThreshold)
   const setLowFlowOpacity = usePlannerStore((state) => state.setLowFlowOpacity)
-  const focused = useMemo(() => targetId ? visibleNodes(registry, targetId) : null, [registry, targetId])
+  const setLowFlowThreshold = usePlannerStore((state) => state.setLowFlowThreshold)
+  const focusIds = usePlannerStore((state) => state.focusIds)
+  const toggleFocus = usePlannerStore((state) => state.toggleFocus)
+  const clearFocus = usePlannerStore((state) => state.clearFocus)
+  const focusedItems = useMemo(() => new Set(focusIds), [focusIds])
+  const focusedRecipes = useMemo(() => new Set(registry.recipes.filter((recipe) => [...recipe.inputs, ...recipe.outputs].some((entry) => focusedItems.has(entry.itemId))).map((recipe) => recipe.id)), [registry, focusedItems])
   const defaults = useMemo(() => routePositions(registry), [registry])
   const itemPositions = useMemo(() => Object.fromEntries(registry.items.map((item) => {
     const id = itemNode(item.id)
@@ -50,9 +57,7 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
   useEffect(() => { onViewChange(layoutView, view) }, [layoutView, view, onViewChange])
 
   useEffect(() => {
-    const targetChanged = targetId !== lastTarget.current
-    lastTarget.current = targetId
-    if (initialCentered.current && (!targetId || !targetChanged)) return
+    if (initialCentered.current) return
     initialCentered.current = true
     if (fitOnLoad) {
       const points = Object.values(positions)
@@ -68,13 +73,13 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
       return
     }
     const top = Object.values(defaults).sort((a, b) => a.y - b.y).slice(0, 20).sort((a, b) => a.x - b.x)
-    const target = targetId ? positions[itemNode(targetId)] : top[Math.floor(top.length / 2)]
+    const target = top[Math.floor(top.length / 2)]
     if (!target) return
     const width = viewport.current?.clientWidth ?? 1000
     const height = viewport.current?.clientHeight ?? 700
-    const scale = targetId ? 0.8 : 0.7
-    setView({ x: width * 0.58 - (target.x + ITEM_WIDTH / 2) * scale, y: height * (targetId ? 0.48 : 0.28) - (target.y + ITEM_HEIGHT / 2) * scale, scale })
-  }, [targetId, defaults, fitOnLoad])
+    const scale = 0.7
+    setView({ x: width * 0.58 - (target.x + ITEM_WIDTH / 2) * scale, y: height * 0.28 - (target.y + ITEM_HEIGHT / 2) * scale, scale })
+  }, [defaults, fitOnLoad])
 
   function fitAll() {
     const points = Object.values(positions)
@@ -93,6 +98,7 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
     if (!drag.current) return
     const dx = event.clientX - drag.current.x
     const dy = event.clientY - drag.current.y
+    drag.current.travel = (drag.current.travel ?? 0) + Math.hypot(dx, dy)
     if (drag.current.type === 'pan') setView((old) => ({ ...old, x: old.x + dx, y: old.y + dy }))
     else if (drag.current.id && drag.current.position) {
       const id = drag.current.id
@@ -135,8 +141,8 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
       const source = positions[from]
       if (source) {
         const itemCenter = { x: source.x + ITEM_WIDTH / 2, y: source.y + ITEM_HEIGHT / 2 }
-        const unitRate = entry.amount * 60 / recipe.duration
-        addEdge({ key: `${recipe.id}-in-${index}`, from, to: recipeId, x1: itemCenter.x, y1: itemCenter.y, x2: center.x, y2: center.y, recipeId: recipe.id, kind: 'input', unitRate, actualRate: unitRate * (solution?.rates[recipe.id] ?? 0) })
+        const unitRate = ingredientRate(entry, recipe)
+        addEdge({ key: `${recipe.id}-in-${index}`, from, to: recipeId, x1: itemCenter.x, y1: itemCenter.y, x2: center.x, y2: center.y, recipeId: recipe.id, kind: 'input', condition: Boolean(entry.condition), unitRate, actualRate: unitRate * (solution?.rates[recipe.id] ?? 0) })
       }
     }
     for (const [index, entry] of recipe.outputs.entries()) {
@@ -145,17 +151,27 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
       if (destination) {
         const itemCenter = { x: destination.x + ITEM_WIDTH / 2, y: destination.y + ITEM_HEIGHT / 2 }
         const unitRate = entry.amount * 60 / recipe.duration
-        addEdge({ key: `${recipe.id}-out-${index}`, from: recipeId, to, x1: center.x, y1: center.y, x2: itemCenter.x, y2: itemCenter.y, recipeId: recipe.id, kind: 'output', unitRate, actualRate: unitRate * (solution?.rates[recipe.id] ?? 0) })
+        addEdge({ key: `${recipe.id}-out-${index}`, from: recipeId, to, x1: center.x, y1: center.y, x2: itemCenter.x, y2: itemCenter.y, recipeId: recipe.id, kind: 'output', condition: entry.itemId.startsWith('effect:'), unitRate, actualRate: unitRate * (solution?.rates[recipe.id] ?? 0) })
       }
     }
   }
   const recipeThroughput = new Map<string, number>()
-  for (const edge of edges) recipeThroughput.set(edge.recipeId, Math.max(recipeThroughput.get(edge.recipeId) ?? 0, edge.actualRate))
+  const itemRecipes = new Map<string, Set<string>>()
+  for (const edge of edges) {
+    recipeThroughput.set(edge.recipeId, Math.max(recipeThroughput.get(edge.recipeId) ?? 0, edge.actualRate))
+    const itemId = (edge.kind === 'input' ? edge.from : edge.to).slice('item:'.length)
+    const connected = itemRecipes.get(itemId) ?? new Set<string>()
+    connected.add(edge.recipeId)
+    itemRecipes.set(itemId, connected)
+  }
+  const lowFlowRecipes = new Set([...recipeThroughput].filter(([, throughput]) => throughput < lowFlowThreshold).map(([id]) => id))
+  const lowFlowItems = new Set([...itemRecipes].filter(([, recipes]) => [...recipes].every((id) => lowFlowRecipes.has(id))).map(([id]) => id))
 
-  return <div className={`canvas ${focused ? 'has-focus' : ''}`} style={{ '--low-flow-opacity': lowFlowOpacity } as CSSProperties} ref={viewport} onWheel={zoom} onPointerMove={pointerMove}
+  return <div className="canvas" style={{ '--low-flow-opacity': lowFlowOpacity } as CSSProperties} ref={viewport} onWheel={zoom} onPointerMove={pointerMove}
     onPointerDown={(event) => { drag.current = { type: 'pan', x: event.clientX, y: event.clientY }; event.currentTarget.setPointerCapture(event.pointerId) }}
     onPointerUp={() => {
       if (drag.current?.type === 'node' && drag.current.id && drag.current.position) {
+        if ((drag.current.travel ?? 0) > 5) lastItemPress.current = null
         const id = drag.current.id
         setNodePosition(layoutView, id, drag.current.position)
         setOverrides((old) => { const next = { ...old }; delete next[id]; return next })
@@ -165,8 +181,10 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
     <div className="canvas-grid" style={{ backgroundSize: `${24 * view.scale}px ${24 * view.scale}px`, backgroundPosition: `${view.x}px ${view.y}px`, opacity: view.scale < 0.3 ? 0 : 1 }} />
     <div className="canvas-stage" style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})` }}>
       <svg className="edge-layer" width="100%" height="100%">
-        {edges.map((edge) => <g key={edge.key} className={`edge-group ${solution && edge.actualRate < 1 ? 'low-flow' : ''} ${focused && (!focused.has(edge.from) || !focused.has(edge.to)) ? 'faded' : ''}`}>
-          <line x1={edge.x1} y1={edge.y1} x2={edge.x2} y2={edge.y2} className={`edge ${edge.kind} ${(solution?.rates[edge.recipeId] ?? 0) > 0.005 ? 'active' : ''}`}
+        {edges.map((edge) => <g key={edge.key} className={`edge-group ${solution && lowFlowRecipes.has(edge.recipeId) ? 'low-flow' : ''} ${focusedRecipes.has(edge.recipeId) ? 'focused' : ''}`}>
+          {focusedRecipes.has(edge.recipeId) && <line x1={edge.x1} y1={edge.y1} x2={edge.x2} y2={edge.y2} className="edge-glow" style={{ strokeWidth: Math.max(5, Math.ceil(edge.actualRate / 30) + 4) }} />}
+          {focusedRecipes.has(edge.recipeId) && <line x1={edge.x1} y1={edge.y1} x2={edge.x2} y2={edge.y2} className="edge-highlight" style={{ strokeWidth: Math.max(2, Math.ceil(edge.actualRate / 30) + 1) }} />}
+          <line x1={edge.x1} y1={edge.y1} x2={edge.x2} y2={edge.y2} className={`edge ${edge.kind} ${edge.condition ? 'condition' : ''} ${(solution?.rates[edge.recipeId] ?? 0) > 0.005 ? 'active' : ''}`}
             style={solution ? { strokeWidth: Math.max(1, Math.ceil(edge.actualRate / 30)), opacity: 1 } : undefined} />
           <text x={edge.unitX} y={edge.unitY} textAnchor={edge.unitAnchor} className={`edge-label recipe-rate ${edge.kind} ${hoveredRecipe === edge.recipeId ? 'revealed' : ''}`}>{formatEdgeRate(edge.unitRate)}</text>
           {solution && <text x={edge.labelX} y={edge.labelY} textAnchor="middle" className={`edge-label flow-rate ${edge.kind}`}>{formatEdgeRate(edge.actualRate)}</text>}
@@ -175,9 +193,20 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
       {registry.items.map((item) => {
         const pos = positions[itemNode(item.id)]
         const flow = itemFlows(item, flowRecipes, solution)
-        return <div key={item.id} className={`graph-node item-node ${item.canExternalInput ? 'external' : ''} ${targetId === item.id ? 'selected' : ''} ${targetIds.includes(item.id) ? 'goal' : ''} ${solution && Math.max(flow.produced + flow.source, flow.consumed) < 1 ? 'low-flow' : ''} ${focused && !focused.has(itemNode(item.id)) ? 'faded' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${item.name} · 输入 ${formatRate(flow.produced + flow.source)}（含外部输入 ${formatRate(flow.source)}）· 输出 ${formatRate(flow.consumed)} · 净 ${formatRate(flow.net)} / 分`}
-          onPointerDown={(event) => { event.stopPropagation(); drag.current = { type: 'node', id: itemNode(item.id), x: event.clientX, y: event.clientY, position: pos }; viewport.current?.setPointerCapture(event.pointerId) }}
-          onDoubleClick={() => onSelectItem(item.id)}>
+        return <div key={item.id} className={`graph-node item-node ${item.isEffect ? 'effect-node' : ''} ${item.canExternalInput ? 'external' : ''} ${item.id in wulingVoucherPrices ? 'voucher' : ''} ${targetIds.includes(item.id) ? 'goal' : ''} ${solution && lowFlowItems.has(item.id) ? 'low-flow' : ''} ${focusedItems.has(item.id) ? 'focused' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${item.name} · 输入 ${formatRate(flow.produced + flow.source)}（含外部输入 ${formatRate(flow.source)}）· 输出 ${formatRate(flow.consumed)} · 净 ${formatRate(flow.net)} / 分`}
+          onPointerDown={(event) => {
+            event.stopPropagation()
+            const now = performance.now()
+            if (lastItemPress.current?.id === item.id && now - lastItemPress.current.time < 350) {
+              toggleFocus(item.id)
+              lastItemPress.current = null
+              drag.current = null
+              return
+            }
+            lastItemPress.current = { id: item.id, time: now }
+            drag.current = { type: 'node', id: itemNode(item.id), x: event.clientX, y: event.clientY, position: pos, travel: 0 }
+            viewport.current?.setPointerCapture(event.pointerId)
+          }}>
           <div className="item-title">{item.name}</div>
           <div className="item-rates"><div className="item-in">入 {formatPortRate(flow.produced + flow.source)}</div><div className="item-out">出 {formatPortRate(flow.consumed)}</div><div className={`item-net ${flow.net < -0.01 ? 'negative' : ''}`}>净 {formatPortRate(flow.net)}</div></div>
         </div>
@@ -185,20 +214,31 @@ export default function Canvas({ registry, flowRecipes, targetId, targetIds, sol
       {registry.recipes.map((recipe) => {
         const pos = positions[recipeNode(recipe.id)]
         const rate = solution?.rates[recipe.id] ?? 0
-        return <div key={recipe.id} className={`graph-node recipe-node ${rate > 0.005 ? 'running' : ''} ${solution && (recipeThroughput.get(recipe.id) ?? 0) < 1 ? 'low-flow' : ''} ${focused && !focused.has(recipeNode(recipe.id)) ? 'faded' : ''}`} style={{ left: pos.x, top: pos.y }} title={`${recipe.name} · ${formatRate(rate)} 份配方效率 · 耗电 ${recipe.power}/份 · ${recipe.duration} 秒/次 · 输入 ${recipe.inputs.map((entry) => `${names.get(entry.itemId)} ${formatPortRate(entry.amount * 60 / recipe.duration)}`).join('、')} · 输出 ${recipe.outputs.map((entry) => `${names.get(entry.itemId)} ${formatPortRate(entry.amount * 60 / recipe.duration)}`).join('、')}`}
+        const ingredients = (entries: Recipe['inputs']) => entries.map((entry) => `${names.get(entry.itemId) ?? entry.itemId}×${entry.amount}`).join(' + ')
+        const conditions = recipe.inputs.filter((entry) => entry.condition)
+        const recipeTooltip = [
+          `装置：${recipe.machineName}`,
+          `${ingredients(recipe.inputs.filter((entry) => !entry.condition))} → ${recipe.outputs.length ? ingredients(recipe.outputs) : '∅'}`,
+          ...(conditions.length ? [`条件：${ingredients(conditions)} / 分 / 台`] : []),
+          `倍率：${formatRate(rate)} 份配方效率`,
+          `耗电：${recipe.power}/份`,
+          `耗时：${recipe.duration} 秒/次`,
+        ].join('\n')
+        return <div key={recipe.id} className={`graph-node recipe-node ${rate > 0.005 ? 'running' : ''} ${solution && lowFlowRecipes.has(recipe.id) ? 'low-flow' : ''} ${focusedRecipes.has(recipe.id) ? 'focused' : ''}`} style={{ left: pos.x, top: pos.y }} title={recipeTooltip}
           onPointerEnter={() => setHoveredRecipe(recipe.id)} onPointerLeave={() => setHoveredRecipe(null)}
           onPointerDown={(event) => event.stopPropagation()}>
           <span className="recipe-factor">{rate.toFixed(1)}</span>
         </div>
       })}
     </div>
-    <div className="canvas-hint">{fitOnLoad ? '仅显示目标上游 · 节点速率按全图计算 · 拖动平移与产物' : '拖动平移 · 滚轮缩放 · 拖动产物 · 双击产物聚焦'}</div>
+    {focusIds.length > 0 && <div className="focus-list" onPointerDown={(event) => event.stopPropagation()}><div className="focus-heading">聚焦 <button onClick={clearFocus}>清空</button></div>{focusIds.map((id) => <button key={id} className="focus-entry" onClick={() => toggleFocus(id)}>{focusNames[id] ?? id}<span>×</span></button>)}</div>}
     <div className="canvas-actions" onPointerDown={(event) => event.stopPropagation()} onWheel={(event) => event.stopPropagation()}>
       <button className="layout-button" onClick={() => optimizeLayout(layoutView, registry)}>优化排布</button>
       <button className="fit-button" onClick={fitAll}>适配全图</button>
       <div className="zoom-badge">
         <label className="opacity-control"><span>透明度 {Math.round((1 - lowFlowOpacity) * 100)}%</span><input aria-label="低流量透明度" type="range" min="0" max="100" step="1" value={Math.round((1 - lowFlowOpacity) * 100)} onChange={(event) => setLowFlowOpacity(1 - Number(event.target.value) / 100)} /></label>
-        <span>{Math.round(view.scale * 100)}% · {registry.items.length} 产物 · {registry.recipes.length} 配方</span>
+        <label className="opacity-control"><span>阈值 {formatRate(lowFlowThreshold)}</span><input aria-label="低流量阈值" type="range" min="0" max="30" step="0.1" value={lowFlowThreshold} onChange={(event) => setLowFlowThreshold(Number(event.target.value))} /></label>
+        <span>{Math.round(view.scale * 100)}%</span>
       </div>
     </div>
   </div>

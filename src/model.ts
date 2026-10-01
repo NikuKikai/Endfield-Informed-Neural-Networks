@@ -1,7 +1,9 @@
-import type { Item, NodeId, Recipe, Registry, Solution, Supply } from './types'
+import type { Ingredient, Item, NodeId, Recipe, Registry, Solution, Supply } from './types'
+import { wulingVoucherPrices } from './data/wulingVouchers'
 
 export const itemNode = (id: string): NodeId => `item:${id}`
 export const recipeNode = (id: string): NodeId => `recipe:${id}`
+export const ingredientRate = (entry: Ingredient, recipe: Recipe) => entry.amount * (entry.perMinute ? 1 : 60 / recipe.duration)
 
 export function unavailableItemIds(registry: Registry, disabledIds: string[], supplies: Supply[]): Set<string> {
   const productionDisabled = new Set(disabledIds)
@@ -82,12 +84,25 @@ export function itemFlows(item: Item, recipes: Recipe[], solution: Solution | nu
   let consumed = 0
   for (const recipe of recipes) {
     const rate = solution?.rates[recipe.id] ?? 0
-    const multiplier = 60 / recipe.duration * rate
-    for (const entry of recipe.outputs) if (entry.itemId === item.id) produced += entry.amount * multiplier
-    for (const entry of recipe.inputs) if (entry.itemId === item.id) consumed += entry.amount * multiplier
+    for (const entry of recipe.outputs) if (entry.itemId === item.id) produced += ingredientRate(entry, recipe) * rate
+    for (const entry of recipe.inputs) if (entry.itemId === item.id) consumed += ingredientRate(entry, recipe) * rate
   }
   const source = solution?.sources[item.id] ?? 0
   return { produced, consumed, source, net: produced + source - consumed }
+}
+
+export function displayedPower(recipes: Recipe[], solution: Solution | null) {
+  if (!solution) return { consumption: 0, generation: 0 }
+  return recipes.reduce((totals, recipe) => {
+    const rate = Math.max(0, solution.rates[recipe.id] ?? 0)
+    totals.consumption += Math.ceil(rate) * recipe.power
+    totals.generation += rate * recipe.powerOutput
+    return totals
+  }, { consumption: 0, generation: 0 })
+}
+
+export function wulingVoucherRate(net: Record<string, number>) {
+  return Object.entries(wulingVoucherPrices).reduce((total, [itemId, price]) => total + (net[itemId] ?? 0) * price, 0)
 }
 
 export function formatRate(value: number) {

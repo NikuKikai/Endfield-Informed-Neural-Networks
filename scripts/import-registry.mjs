@@ -13,7 +13,7 @@ function readAst(relativePath) {
 }
 
 function property(node, key) {
-  return node.properties?.find((entry) => ts.isPropertyAssignment(entry) && entry.name.getText().replaceAll('"', '') === key)?.initializer
+  return node?.properties?.find((entry) => ts.isPropertyAssignment(entry) && entry.name.getText().replaceAll('"', '') === key)?.initializer
 }
 
 function string(node) {
@@ -55,7 +55,14 @@ const containers = new Map(allItems.filter((item) => item.tags.some((tag) => tag
   vessel: item.tags.find((tag) => tag.startsWith('container:'))?.slice('container:'.length),
   content: item.tags.find((tag) => tag.startsWith('container-item:'))?.slice('container-item:'.length),
 }]))
-const items = allItems.filter((item) => !containers.has(item.id))
+const sourceRecipes = definitionArray(readAst('src/registry/recipe-definition.ts'), 'RECIPE_DEFINITIONS')
+const diffusionGases = [...new Set(sourceRecipes.filter(ts.isObjectLiteralExpression)
+  .map((node) => string(property(property(node, 'gasDiffusionOutput'), 'gasItemId'))).filter(Boolean))]
+const effectId = (gasId) => `effect:${gasId}`
+const items = [
+  ...allItems.filter((item) => !containers.has(item.id)),
+  ...diffusionGases.map((gasId) => ({ id: effectId(gasId), name: `${allItems.find((item) => item.id === gasId)?.name ?? gasId}效果`, isEffect: true })),
+]
 const rawItemIds = new Set([
   'item_originium_ore', 'item_quartz_sand', 'item_iron_ore', 'item_copper_ore',
   'item_liquid_water', 'item_gas_inert', 'item_liquid_acid', 'item_gas_xiranite',
@@ -64,21 +71,45 @@ const rawItemIds = new Set([
 
 const allowedItems = new Set(items.map((item) => item.id))
 const itemNames = new Map(items.map((item) => [item.id, item.name]))
-const sourceRecipes = definitionArray(readAst('src/registry/recipe-definition.ts'), 'RECIPE_DEFINITIONS')
-const candidateRecipes = sourceRecipes.filter(ts.isObjectLiteralExpression).map((node) => {
-  const id = string(property(node, 'id'))
-  const key = string(property(node, 'nameKey'))
-  const duration = number(property(node, 'durationSeconds'))
-  const ingredients = (keyName) => array(property(node, keyName)).map((entry) => ({
-    itemId: string(property(entry, 'itemId')),
-    amount: number(property(entry, 'amount')),
-  }))
-  const inputs = ingredients('inputs')
-  const outputs = ingredients('outputs')
-  const inputNames = inputs.map((entry) => itemNames.get(entry.itemId) ?? entry.itemId).join(' + ')
-  const outputNames = outputs.map((entry) => itemNames.get(entry.itemId) ?? entry.itemId).join(' + ')
-  return { id, name: names[key] ?? (outputs.length ? `${outputNames} ← ${inputNames || '采集'}` : `处理 ${inputNames}`), duration, power: 1, inputs, outputs }
-})
+const entityNodes = definitionArray(readAst('src/registry/entity-definition.ts'), 'ENTITY_DEFINITIONS')
+const machinePower = new Map(entityNodes.flatMap((node) => {
+  if (!ts.isCallExpression(node) || !node.arguments.length || !ts.isObjectLiteralExpression(node.arguments[0])) return []
+  const definition = node.arguments[0]
+  const id = string(property(definition, 'id'))
+  if (!id) return []
+  return [[id, number(property(definition, 'powerDemand')) ?? 0]]
+}))
+const excludedMachineIds = new Set([dynamicStrings.WATER_PURIFIER_NODE_ENTITY_ID, 'mix_pool_2'])
+const directGasMachines = new Map([
+  ['transmuter_2_gastrans', 'item_gas_xiranite'],
+  ['transmuter_2_solidtrans', 'item_gas_xiranite'],
+])
+const candidateRecipes = sourceRecipes.filter(ts.isObjectLiteralExpression)
+  .filter((node) => !array(property(node, 'tags')).map(string).includes('自然资源采集'))
+  .filter((node) => !excludedMachineIds.has(string(property(node, 'machineId'))))
+  .filter((node) => !String(string(property(node, 'id'))).endsWith('_xiranite_consumption_internal') || !directGasMachines.has(string(property(node, 'machineId'))))
+  .map((node) => {
+    const id = string(property(node, 'id'))
+    const key = string(property(node, 'nameKey'))
+    const diffusionGas = string(property(property(node, 'gasDiffusionOutput'), 'gasItemId'))
+    const duration = diffusionGas ? 60 : number(property(node, 'durationSeconds'))
+    const machineId = string(property(node, 'machineId'))
+    const machineName = names[`registry.entity.${machineId}.name`]
+    const ingredients = (keyName) => array(property(node, keyName)).map((entry) => ({
+      itemId: string(property(entry, 'itemId')),
+      amount: number(property(entry, 'amount')),
+    }))
+    const inputs = diffusionGas ? [{ itemId: diffusionGas, amount: 30 }]
+      : ingredients('inputs')
+    const outputs = diffusionGas ? [{ itemId: effectId(diffusionGas), amount: 30 }]
+      : ingredients('outputs')
+    const requiredEffect = string(property(node, 'requiredGasDiffusion'))
+    if (requiredEffect) inputs.push({ itemId: effectId(requiredEffect), amount: 7.5, perMinute: true, condition: true })
+    if (directGasMachines.has(machineId) && !diffusionGas) inputs.push({ itemId: directGasMachines.get(machineId), amount: 6, perMinute: true, condition: true })
+    const inputNames = inputs.map((entry) => itemNames.get(entry.itemId) ?? entry.itemId).join(' + ')
+    const outputNames = outputs.map((entry) => itemNames.get(entry.itemId) ?? entry.itemId).join(' + ')
+    return { id, name: names[key] ?? (outputs.length ? `${outputNames} ← ${inputNames || '采集'}` : `处理 ${inputNames}`), duration, machineId, machineName, power: machinePower.get(machineId), powerOutput: number(property(node, 'powerOutput')) ?? 0, inputs, outputs }
+  })
 const flattenedRecipes = candidateRecipes.map((recipe) => ({ ...recipe, inputs: recipe.inputs.flatMap((entry) => {
   const container = containers.get(entry.itemId)
   return container?.vessel && container.content
@@ -97,9 +128,13 @@ function hasMaterialChange(recipe) {
 const recipes = flattenedRecipes.filter((recipe) => recipe.id && recipe.duration > 0 && recipe.inputs.length > 0
   && hasMaterialChange(recipe)
   && [...recipe.inputs, ...recipe.outputs].every((entry) => entry.itemId && entry.amount !== null && allowedItems.has(entry.itemId)))
+const missingMachines = [...new Set(recipes.filter((recipe) => recipe.power === undefined).map((recipe) => recipe.machineId))]
+if (missingMachines.length) throw new Error(`Missing power definitions for machines: ${missingMachines.join(', ')}`)
+const missingMachineNames = [...new Set(recipes.filter((recipe) => !recipe.machineName).map((recipe) => recipe.machineId))]
+if (missingMachineNames.length) throw new Error(`Missing names for machines: ${missingMachineNames.join(', ')}`)
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true })
 const producedItemIds = new Set(recipes.flatMap((recipe) => recipe.outputs.map((entry) => entry.itemId)))
-fs.writeFileSync(outputPath, `${JSON.stringify({ source: 'hsyhhssyy/IndustrialPlanner', items: items.map(({ id, name }) => ({ id, name, canExternalInput: rawItemIds.has(id), canProduce: !rawItemIds.has(id) || producedItemIds.has(id) })), recipes }, null, 2)}\n`)
+fs.writeFileSync(outputPath, `${JSON.stringify({ source: 'hsyhhssyy/IndustrialPlanner', items: items.map(({ id, name, isEffect }) => ({ id, name, canExternalInput: rawItemIds.has(id), canProduce: !rawItemIds.has(id) || producedItemIds.has(id), ...(isEffect ? { isEffect: true } : {}) })), recipes }, null, 2)}\n`)
 const dynamic = candidateRecipes.filter((recipe) => !recipe.id || !recipe.duration || [...recipe.inputs, ...recipe.outputs].some((entry) => !entry.itemId || entry.amount === null)).length
 console.log(`Imported ${items.length} items and ${recipes.length} recipes; skipped ${dynamic} dynamic and ${sourceRecipes.length - recipes.length - dynamic} filtered recipes.`)

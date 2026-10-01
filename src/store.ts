@@ -4,7 +4,7 @@ import { defaultSupplies } from './defaultSupplies'
 import { routePositions } from './layout'
 import { itemNode } from './model'
 import { optimizeItemPositions } from './optimizeLayout'
-import type { Point, Registry, Solution, Supply, Target } from './types'
+import type { HistoryPoint, Point, Registry, Solution, Supply, Target } from './types'
 
 export type LayoutView = 'all' | 'targets'
 type Layouts = Record<LayoutView, Record<string, Point>>
@@ -16,8 +16,16 @@ type PlannerState = {
   targets: Target[]
   supplies: Supply[]
   powerWeight: number
+  voucherWeight: number
+  learningRate: number
+  runSteps: number
+  completedSteps: number
   lowFlowOpacity: number
+  lowFlowThreshold: number
   disabledIds: string[]
+  focusIds: string[]
+  history: HistoryPoint[]
+  visibleHistoryMetrics: string[]
   layouts: Layouts
   visibleItems: VisibleItems
   solution: Solution | null
@@ -30,9 +38,17 @@ type PlannerState = {
   removeTarget: (id: string) => void
   setSupplyLimit: (id: string, limit: number | null) => void
   setPowerWeight: (weight: number) => void
+  setVoucherWeight: (weight: number) => void
+  setLearningRate: (rate: number) => void
+  setRunSteps: (steps: number) => void
   setLowFlowOpacity: (opacity: number) => void
+  setLowFlowThreshold: (threshold: number) => void
   toggleDisabled: (id: string) => void
-  setRunState: (running: boolean, status: string, solution?: Solution | null) => void
+  toggleFocus: (id: string) => void
+  clearFocus: () => void
+  addHistoryPoint: (point: HistoryPoint) => void
+  toggleHistoryMetric: (key: string) => void
+  setRunState: (running: boolean, status: string, solution?: Solution | null, completedSteps?: number) => void
   ensureLayout: (view: LayoutView, registry: Registry) => void
   optimizeLayout: (view: LayoutView, registry: Registry) => void
   setNodePosition: (view: LayoutView, id: string, point: Point) => void
@@ -76,8 +92,16 @@ export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
   targets: [],
   supplies: defaultSupplies.map((entry) => ({ ...entry })),
   powerWeight: 1,
+  voucherWeight: 0,
+  learningRate: 0.005,
+  runSteps: 1800,
+  completedSteps: 0,
   lowFlowOpacity: 0.5,
+  lowFlowThreshold: 1,
   disabledIds: [],
+  focusIds: [],
+  history: [],
+  visibleHistoryMetrics: ['loss:total'],
   layouts: { all: {}, targets: {} },
   visibleItems: { all: [], targets: [] },
   solution: null,
@@ -85,23 +109,32 @@ export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
   running: false,
   setSelectedId: (selectedId) => set({ selectedId }),
   setViewMode: (viewMode) => set({ viewMode }),
-  addTarget: (id) => set((state) => ({
-    selectedId: id,
-    targets: state.targets.some((target) => target.itemId === id) ? state.targets : [...state.targets, { itemId: id, value: 60 }],
-    solution: null,
-  })),
-  setTargetValue: (id, value) => set((state) => ({ targets: state.targets.map((target) => target.itemId === id ? { ...target, value } : target), solution: null })),
-  removeTarget: (id) => set((state) => ({ targets: state.targets.filter((target) => target.itemId !== id), solution: null })),
+  addTarget: (id) => set((state) => {
+    if (state.targets.some((target) => target.itemId === id)) return { selectedId: id }
+    return { selectedId: id, targets: [...state.targets, { itemId: id, value: 60 }], status: state.solution ? '目标已更改，可继续配平' : state.status }
+  }),
+  setTargetValue: (id, value) => set((state) => ({ targets: state.targets.map((target) => target.itemId === id ? { ...target, value } : target), status: state.solution ? '目标已更改，可继续配平' : state.status })),
+  removeTarget: (id) => set((state) => ({ targets: state.targets.filter((target) => target.itemId !== id), status: state.solution ? '目标已更改，可继续配平' : state.status })),
   setSupplyLimit: (id, limit) => set((state) => ({ supplies: state.supplies.some((entry) => entry.itemId === id)
     ? state.supplies.map((entry) => entry.itemId === id ? { ...entry, limit } : entry)
-    : [...state.supplies, { itemId: id, limit }], solution: null })),
-  setPowerWeight: (weight) => set({ powerWeight: Math.max(0, weight), solution: null }),
+    : [...state.supplies, { itemId: id, limit }], solution: null, completedSteps: 0, history: [] })),
+  setPowerWeight: (weight) => set((state) => ({ powerWeight: Math.min(1, Math.max(0, weight)), status: state.solution ? '目标已更改，可继续配平' : state.status })),
+  setVoucherWeight: (weight) => set((state) => ({ voucherWeight: Math.min(1, Math.max(0, weight)), status: state.solution ? '目标已更改，可继续配平' : state.status })),
+  setLearningRate: (rate) => set({ learningRate: Math.min(0.05, Math.max(0.0001, rate)) }),
+  setRunSteps: (steps) => set({ runSteps: Math.min(10000, Math.max(100, Math.round(steps / 100) * 100)) }),
   setLowFlowOpacity: (opacity) => set({ lowFlowOpacity: Math.min(1, Math.max(0, opacity)) }),
+  setLowFlowThreshold: (threshold) => set({ lowFlowThreshold: Math.min(30, Math.max(0, threshold)) }),
   toggleDisabled: (id) => set((state) => ({
     disabledIds: state.disabledIds.includes(id) ? state.disabledIds.filter((itemId) => itemId !== id) : [...state.disabledIds, id],
     solution: null,
+    completedSteps: 0,
+    history: [],
   })),
-  setRunState: (running, status, solution) => set({ running, status, ...(solution !== undefined ? { solution } : {}) }),
+  toggleFocus: (id) => set((state) => ({ focusIds: state.focusIds.includes(id) ? state.focusIds.filter((itemId) => itemId !== id) : [...state.focusIds, id] })),
+  clearFocus: () => set({ focusIds: [] }),
+  addHistoryPoint: (point) => set((state) => ({ history: [...state.history.filter((entry) => entry.iterations !== point.iterations), point].sort((a, b) => a.iterations - b.iterations) })),
+  toggleHistoryMetric: (key) => set((state) => ({ visibleHistoryMetrics: state.visibleHistoryMetrics.includes(key) ? state.visibleHistoryMetrics.filter((entry) => entry !== key) : [...state.visibleHistoryMetrics, key] })),
+  setRunState: (running, status, solution, completedSteps) => set({ running, status, ...(solution !== undefined ? { solution, ...(solution === null ? { history: [] } : {}) } : {}), ...(completedSteps !== undefined ? { completedSteps } : {}) }),
   ensureLayout: (view, registry) => {
     const state = get()
     const ids = registry.items.map((item) => item.id)
@@ -117,7 +150,7 @@ export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
     }))
   },
   optimizeLayout: (view, registry) => {
-    const positions = positionsFor(registry, get().layouts[view])
+    const positions = routePositions(registry)
     const optimized = optimizeItemPositions(registry, positions)
     set((state) => ({ layouts: { ...state.layouts, [view]: { ...state.layouts[view], ...optimized } } }))
   },
@@ -132,8 +165,14 @@ export const usePlannerStore = create<PlannerState>()(persist((set, get) => ({
     targets: state.targets,
     supplies: state.supplies,
     powerWeight: state.powerWeight,
+    voucherWeight: state.voucherWeight,
+    learningRate: state.learningRate,
+    runSteps: state.runSteps,
     lowFlowOpacity: state.lowFlowOpacity,
+    lowFlowThreshold: state.lowFlowThreshold,
     disabledIds: state.disabledIds,
+    focusIds: state.focusIds,
+    visibleHistoryMetrics: state.visibleHistoryMetrics,
     layouts: state.layouts,
     visibleItems: state.visibleItems,
   }),

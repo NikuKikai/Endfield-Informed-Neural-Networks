@@ -1,9 +1,11 @@
-export type Item = { id: string; name: string; canExternalInput: boolean; canProduce: boolean }
-export type Ingredient = { itemId: string; amount: number }
-export type Recipe = { id: string; name: string; duration: number; power: number; inputs: Ingredient[]; outputs: Ingredient[] }
+export type Item = { id: string; name: string; canExternalInput: boolean; canProduce: boolean; isEffect?: boolean }
+export type Ingredient = { itemId: string; amount: number; perMinute?: boolean; condition?: boolean }
+export type Recipe = { id: string; name: string; duration: number; machineId: string; machineName: string; power: number; powerOutput: number; inputs: Ingredient[]; outputs: Ingredient[] }
 export type Registry = { source: string; items: Item[]; recipes: Recipe[] }
 export type Target = { itemId: string; value: number }
 export type Supply = { itemId: string; limit: number | null }
-export type Solution = { rates: Record<string, number>; sources: Record<string, number>; net: Record<string, number>; power: number; loss: number; iterations: number }
+export type LossBreakdown = { targets: Record<string, number>; power: number; vouchers: number; balance: number; shortage: number; supply: number; oven: number; other: number }
+export type Solution = { rates: Record<string, number>; sources: Record<string, number>; net: Record<string, number>; power: number; generation: number; vouchers: number; ovenUsage: number; loss: number; iterations: number; lossBreakdown: LossBreakdown }
+export type HistoryPoint = { iterations: number; metrics: Record<string, number> }
 export type NodeId = `item:${string}` | `recipe:${string}`
 export type Point = { x: number; y: number }
